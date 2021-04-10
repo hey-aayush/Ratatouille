@@ -16,6 +16,6 @@ Also get recommened about dishes you might be interested in according to your pr
 Team Name: Null
 
 * [Aayush Kumar Shandilya](https://github.com/hey-aayush)
-* [Aayush Kumar Shandilya](https://github.com/hey-aayush)
+* [Abhay Khandelwal](https://github.com/jaykhandelwal22)
 * [Aayush Kumar Shandilya](https://github.com/hey-aayush)
 * [Aayush Kumar Shandilya](https://github.com/hey-aayush)
