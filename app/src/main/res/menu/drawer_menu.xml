@@ -10,7 +10,19 @@
         <item
             android:id="@+id/nav_aboutus"
             android:icon="@drawable/ic_baseline_turned_in_not_24"
+<<<<<<< HEAD
             android:title="About Us" />
+=======
+            android:title="Settings" />
+        <item
+            android:id="@+id/nav_share"
+            android:icon="@drawable/ic_baseline_share_24"
+            android:title="Share" />
+        <item
+            android:id="@+id/nav_rate"
+            android:icon="@drawable/ic_baseline_rate_review_24"
+            android:title="Rate Us" />
+>>>>>>> cae4b2de0639e4f68ed577ddc4a8d5bcb5559a2d
 
     </group>
     <item android:title="LogOut">

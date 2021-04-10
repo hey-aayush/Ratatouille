@@ -109,6 +109,7 @@ public class UserProfileActivity extends AppCompatActivity {
         fstore=StartActivity.fStore;
         firebaseAuth = FirebaseAuth.getInstance();
         fUser = firebaseAuth.getCurrentUser();
+        user=StartActivity.user;
         dbRef = fstore.collection("usersDetails").document(fUser.getUid());
         storageReference = FirebaseStorage.getInstance().getReference();
 
@@ -199,6 +200,12 @@ public class UserProfileActivity extends AppCompatActivity {
                 showEditProfileDialog();
             }
         });
+
+        recipes=new ArrayList<Recipes>();
+        recipeViewAdapter = new RecipeViewAdapter(this,recipes,fstore);
+        binding.savedRecipes.setLayoutManager(new LinearLayoutManager(this));
+        binding.savedRecipes.setAdapter(recipeViewAdapter);
+        loadSavedRecipes();
     }
 
     private void showChangePasswordDialog() {
