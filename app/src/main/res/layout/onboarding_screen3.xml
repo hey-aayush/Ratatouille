@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    android:id="@+id/slideLayout"
+    >
+
+    <ImageView
+        android:id="@+id/reg_ic"
+        android:layout_width="300dp"
+        android:layout_height="250dp"
+        android:src="@drawable/gaming"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:alpha="0.4"
+        ></ImageView>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutRegion"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/reg_ic"
+        >
+
+        <RadioGroup
+            android:id="@+id/radioGrp3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                android:text="Food from which of the following regions do you like the most ?"
+                android:textColor="#0F2CD1"
+                android:textSize="30sp" />
+
+            <RadioButton
+                android:id="@+id/radio_opt6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="15dp"
+                android:text="South India"
+                android:textColor="#E91E63"
+                android:textSize="30sp" />
+
+            <RadioButton
+                android:id="@+id/radio_opt7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:checked="true"
+                android:text="North India"
+                android:textColor="#E91E63"
+                android:textSize="30sp" />
+
+            <RadioButton
+                android:id="@+id/radio_opt8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:text="West India"
+                android:textColor="#E91E63"
+                android:textSize="30sp" />
+
+            <RadioButton
+                android:id="@+id/radio_opt9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:text="East India"
+                android:textColor="#E91E63"
+                android:textSize="30sp" />
+
+            <RadioButton
+                android:id="@+id/radio_opt10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:text="Central India"
+                android:textColor="#E91E63"
+                android:textSize="30sp" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+</RelativeLayout>

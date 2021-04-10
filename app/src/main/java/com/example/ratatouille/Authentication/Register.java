@@ -12,7 +12,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.ratatouille.MainActivity;
+import com.example.ratatouille.Activity.StartActivity;
+import com.example.ratatouille.Activity.Survey_Form;
 import com.example.ratatouille.Models.User;
 import com.example.ratatouille.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -52,7 +53,7 @@ public class Register extends AppCompatActivity {
         mRegisterBtn = findViewById(R.id.register);
         mAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
-        progressBar = findViewById(R.id.progressBar);
+        progressBar = findViewById(R.id.registrationProgressBar);
 
         mRegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,7 +79,10 @@ public class Register extends AppCompatActivity {
                     mPassword.setError("Password does not match");  //checking password equal to confirm password or not
                     return;
                 }
-                //progressBar.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.VISIBLE);
+                mRegisterBtn.setVisibility(View.GONE);
+
+
                 // register the user in firebase
                 mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -90,11 +94,15 @@ public class Register extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Toast.makeText(Register.this, "Verification Email Has been Sent.", Toast.LENGTH_SHORT).show();
+                                    progressBar.setVisibility(View.GONE);
+                                    mRegisterBtn.setVisibility(View.VISIBLE);
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
                                     Log.d(TAG, "onFailure: Email not sent " + e.getMessage());
+                                    progressBar.setVisibility(View.GONE);
+                                    mRegisterBtn.setVisibility(View.VISIBLE);
                                 }
                             });
                             Toast.makeText(Register.this, "User Created.", Toast.LENGTH_SHORT).show();
@@ -107,11 +115,15 @@ public class Register extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Log.d(TAG, "onSuccess: user Profile is created for "+ userID);
+                                    progressBar.setVisibility(View.GONE);
+                                    mRegisterBtn.setVisibility(View.VISIBLE);
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
                                     Log.d(TAG, "onFailure: " + e.toString());
+                                    progressBar.setVisibility(View.GONE);
+                                    mRegisterBtn.setVisibility(View.VISIBLE);
                                 }
                             });
 //                                startActivity(new Intent(getApplicationContext(),Login.class));
@@ -145,9 +157,13 @@ public class Register extends AppCompatActivity {
                                 public void onFailure(@NonNull Exception e) {
                                     Log.d(TAG, "userData failure: " + e.toString());
                                 }
-                            })
-                            ;
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            });
+
+                            progressBar.setVisibility(View.GONE);
+                            mRegisterBtn.setVisibility(View.VISIBLE);
+
+//                            startActivity(new Intent(getApplicationContext(), StartActivity.class));
+                            startActivity(new Intent(getApplicationContext(), Survey_Form.class));
                         }else {
                             Toast.makeText(Register.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             //progressBar.setVisibility(View.GONE);

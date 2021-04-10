@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="30dp"
+    android:id="@+id/slideLayout"
+    >
+
+    <ImageView
+
+        android:id="@+id/donutimg"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:src="@drawable/donut"
+        android:layout_marginTop="0dp"
+        android:alpha="0.7"
+        ></ImageView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/donutimg"
+        >
+
+        <RadioGroup
+            android:id="@+id/radioGrp1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                android:text="Which of the following do you prefer ?"
+                android:textColor="#2C42BF"
+                android:textSize="30sp" />
+
+            <RadioButton
+                android:id="@+id/radio_opt1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="90dp"
+                android:layout_marginTop="30dp"
+                android:checked="true"
+                android:text="Spicy"
+                android:textColor="#E91E63"
+                android:textSize="30sp" />
+
+            <RadioButton
+                android:id="@+id/radio_opt2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="90dp"
+                android:text="Sweet"
+                android:layout_marginTop="15dp"
+                android:textColor="#C609DA"
+                android:textSize="30sp" />
+
+            <RadioButton
+                android:id="@+id/radio_opt3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="90dp"
+                android:layout_marginTop="15dp"
+                android:text="Sour"
+                android:textColor="#478102"
+                android:textSize="30sp" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
