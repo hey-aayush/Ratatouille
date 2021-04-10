@@ -2,6 +2,10 @@ package com.example.ratatouille.Models;
 
 public class User {
     private String name,uid, email;
+    private boolean isVeg;
+    private int healthy;
+    //Should be enum !!
+    private String region;
 
     public User(String name,String uid,String email){
         this.name=name;
@@ -35,5 +39,29 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean isVeg() {
+        return isVeg;
+    }
+
+    public void setVeg(boolean veg) {
+        isVeg = veg;
+    }
+
+    public int getHealthy() {
+        return healthy;
+    }
+
+    public void setHealthy(int healthy) {
+        this.healthy = healthy;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
     }
 }

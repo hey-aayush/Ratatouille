@@ -16,7 +16,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.ratatouille.MainActivity;
+import com.example.ratatouille.Activity.StartActivity;
+
 import com.example.ratatouille.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -51,7 +52,7 @@ public class Login extends AppCompatActivity {
         user = mAuth.getCurrentUser();
         // If user is logged in already directly open home page
         if(user!=null && user.isEmailVerified()){
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            startActivity(new Intent(getApplicationContext(), StartActivity.class));
             finish();
         }
 
@@ -78,6 +79,7 @@ public class Login extends AppCompatActivity {
                     return;
                 }
                 progressBar.setVisibility(View.VISIBLE);
+                mLoginBtn.setVisibility(View.GONE);
                 // authenticate the user with email and password
                 System.out.println(user);
 
@@ -88,12 +90,13 @@ public class Login extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             user = mAuth.getCurrentUser();
                             if(user.isEmailVerified()){  //verifying the email
-                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                startActivity(new Intent(getApplicationContext(), StartActivity.class));
                                 Toast.makeText(Login.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();}
                             else Toast.makeText(getApplicationContext(),"Please verify email",Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(Login.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);   //setting the progress bar visibility gone after login
+                            mLoginBtn.setVisibility(View.VISIBLE);
                         }
                     }
                 });
