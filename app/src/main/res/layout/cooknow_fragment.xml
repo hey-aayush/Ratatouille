@@ -192,7 +192,23 @@
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
+                <Switch
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:autoText="false"
+                    android:elegantTextHeight="true"
+                    android:showText="true"
+                    android:text="Is Vegitarian :"
+                    android:textOff="Veg"
+                    android:textOn="Non-Veg"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/addCooktimeCard" />
+
             </LinearLayout>
+
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/CookNowRecyclerView"

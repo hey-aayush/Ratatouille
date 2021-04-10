@@ -45,18 +45,20 @@ public class UserProfileActivity extends AppCompatActivity {
     }
 
     void loadSavedRecipes(){
-        fstore.collection("usersDetails").document(user.getUid()).collection("favourites").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                recipes.clear();
-                if(task.isSuccessful()){
-                    Log.d("Profile Activity :","Recipes Size : "+task.getResult().size());
-                    for(DocumentSnapshot documentSnapshot: task.getResult()){
-                        recipes.add(documentSnapshot.toObject(Recipes.class));
+        if(fstore!=null) {
+            fstore.collection("usersDetails").document(user.getUid()).collection("favourites").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    recipes.clear();
+                    if (task.isSuccessful()) {
+                        Log.d("Profile Activity :", "Recipes Size : " + task.getResult().size());
+                        for (DocumentSnapshot documentSnapshot : task.getResult()) {
+                            recipes.add(documentSnapshot.toObject(Recipes.class));
+                        }
+                        recipeViewAdapter.notifyDataSetChanged();
                     }
-                    recipeViewAdapter.notifyDataSetChanged();
                 }
-            }
-        });
+            });
+        }
     }
 }
