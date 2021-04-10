@@ -18,4 +18,4 @@ Team Name: Null
 * [Aayush Kumar Shandilya](https://github.com/hey-aayush)
 * [Saurabh Kumar Kaushal](https://github.com/saurabh-bot)
 * [Abhay Khandelwal](https://github.com/jaykhandelwal22)
-* [Aayush Kumar Shandilya](https://github.com/hey-aayush)
+* [Pradyumn Bhatter](https://github.com/prbhatter)
