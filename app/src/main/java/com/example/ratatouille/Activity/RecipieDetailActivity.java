@@ -20,8 +20,9 @@ public class RecipieDetailActivity extends AppCompatActivity {
         activityRecipieDetailBinding = DataBindingUtil.setContentView(this, R.layout.activity_recipie_detail);
 
         Recipes model = (Recipes) getIntent().getSerializableExtra("recipie_model");
-        activityRecipieDetailBinding.category.setText(model.getRecipeName());
-        activityRecipieDetailBinding.country.setText(model.getRecipeName());
+
+        activityRecipieDetailBinding.category.setText(model.getCookTimeMin());
+        activityRecipieDetailBinding.country.setText(model.getRegion());
         activityRecipieDetailBinding.instructions.setText( model.getRecipeDescription());
 
 
