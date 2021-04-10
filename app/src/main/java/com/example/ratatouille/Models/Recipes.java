@@ -53,7 +53,19 @@ public class Recipes {
         this.region=region;
     }
 
-
+    public Recipes(String recipeName, String recipeDescription, String chefId, String chefName,long timeStamp,List<String> ingredient,List<String>moods,int cookTimeMin) {
+        this.recipeName = recipeName;
+        this.recipeDescription = recipeDescription;
+        this.chefId = chefId;
+        this.chefName=chefName;
+        this.timeStamp = timeStamp;
+        this.ingredients=ingredient;
+        this.moods=moods;
+        this.cookTimeMin=cookTimeMin;
+        this.isVeg=isVeg;
+        this.healthy=healthy;
+        this.region=region;
+    }
 
     public String getRecipeId() {
         return recipeId;
@@ -175,5 +187,16 @@ public class Recipes {
 
     public void setRegion(String region) {
         this.region = region;
+    }
+
+    public String toShareString() {
+        return "Hey! checkout this Recipe by "+chefName+": \n\n" +
+                recipeName.toUpperCase() + "\n\n" +
+                "Cooking Time : " + cookTimeMin + "( mins)\n"+
+                "Ingredients required are " + ingredients +"\n\n"+
+                recipeDescription +"\n\n" +
+                "isVeg : " + isVeg + "\n"+
+                "healthy : " + healthy +"/10\n\n"+
+                recipeImageUrl + '\n';
     }
 }
