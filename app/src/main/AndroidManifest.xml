@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Ratatouille">
-        <activity android:name=".Activity.UserProfileActivity"></activity>
+        <activity android:name=".Activity.RecipieDetailActivity"></activity>
+        <activity android:name=".Activity.UserProfileActivity" />
         <activity android:name=".Activity.addRecipe" />
         <activity android:name=".Authentication.Login" />
         <activity android:name=".Activity.Survey_Form" />
