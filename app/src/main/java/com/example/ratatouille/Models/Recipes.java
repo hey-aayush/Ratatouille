@@ -49,6 +49,20 @@ public class Recipes {
         this.region=region;
     }
 
+    public Recipes(String recipeName, String recipeDescription, String chefId, String chefName,long timeStamp,List<String> ingredient,List<String>moods,int cookTimeMin) {
+        this.recipeName = recipeName;
+        this.recipeDescription = recipeDescription;
+        this.chefId = chefId;
+        this.chefName=chefName;
+        this.timeStamp = timeStamp;
+        this.ingredients=ingredient;
+        this.moods=moods;
+        this.cookTimeMin=cookTimeMin;
+        this.isVeg=isVeg;
+        this.healthy=healthy;
+        this.region=region;
+    }
+
     public String getRecipeId() {
         return recipeId;
     }

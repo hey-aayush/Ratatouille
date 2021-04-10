@@ -13,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.ratatouille.Authentication.Login;
 import com.example.ratatouille.Fragments.CookNowFragment;
 import com.example.ratatouille.Fragments.PostFragment;
 import com.example.ratatouille.Fragments.WhatTodayFragment;
@@ -22,9 +23,16 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
 
 public class StartActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
     ActivityStartBinding binding;
+
+    static String userId;
+    static public FirebaseFirestore fStore;
+    static public FirebaseStorage firebaseStorage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +42,11 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
 
         setSupportActionBar(binding.toolbar);
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, binding.drawerLayout, binding.toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        userId= Login.mAuth.getUid();
+        fStore=FirebaseFirestore.getInstance();
+        firebaseStorage=FirebaseStorage.getInstance();
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, binding.drawerLayout, binding.toolbar,R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         binding.drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         binding.navView.setNavigationItemSelectedListener(this);
