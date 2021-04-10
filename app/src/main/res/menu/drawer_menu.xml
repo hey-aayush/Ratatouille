@@ -8,9 +8,17 @@
             android:icon="@drawable/ic_baseline_account_circle_24"
             android:title="Profile" />
         <item
-            android:id="@+id/nav_settingst"
-            android:icon="@drawable/ic_settings"
+            android:id="@+id/nav_aboutus"
+            android:icon="@drawable/ic_baseline_turned_in_not_24"
             android:title="Settings" />
+        <item
+            android:id="@+id/nav_share"
+            android:icon="@drawable/ic_baseline_share_24"
+            android:title="Share" />
+        <item
+            android:id="@+id/nav_rate"
+            android:icon="@drawable/ic_baseline_rate_review_24"
+            android:title="Rate Us" />
 
     </group>
     <item android:title="LogOut">

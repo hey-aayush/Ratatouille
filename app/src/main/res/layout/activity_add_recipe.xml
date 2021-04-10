@@ -267,28 +267,28 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/CookingHealthText">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center|center_horizontal"
-                android:orientation="horizontal"
-                android:padding="4dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center|center_horizontal"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
 
-                <AutoCompleteTextView
-                    android:id="@+id/addHealtInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="3dp"
-                    android:layout_weight="1"
-                    android:hint="Rating" />
+                    <AutoCompleteTextView
+                        android:id="@+id/addHealtInput"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:layout_weight="1"
+                        android:hint="Rating" />
 
-                <Button
-                    android:id="@+id/addHealthBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Add"
-                    android:textAllCaps="false" />
-            </LinearLayout>
+                    <Button
+                        android:id="@+id/addHealthBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Add"
+                        android:textAllCaps="false" />
+                </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <TextView

@@ -194,7 +194,7 @@ public class addRecipe extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 health=Integer.parseInt(binding.addHealtInput.getText().toString().trim());
-                binding.CookingHealthText.setText("Health wise Rating : "+health%10+"/10");
+                binding.CookingHealthText.setText("Health wise Rating : "+ ((int)health)%10+"/10");
             }
         });
 

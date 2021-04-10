@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -132,8 +134,14 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
             case R.id.nav_logout:
                  SignOut();
                 break;
-            case R.id.nav_settingst:
-                 StartProfileActivity();
+            case R.id.nav_aboutus:
+                StartAboutusActivity();
+                break;
+            case R.id.nav_share:                //For sharing the app
+                share();
+                break;
+            case R.id.nav_rate:         //For giving the rate to our app
+                rateUs();
                 break;
 
         }
@@ -141,10 +149,22 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
         return true;
     }
 
-<<<<<<< HEAD
-=======
+    private void rateUs(){
+        try{
+            startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("https://play.google.com/store/apps/details?id=com.example.ratatouille")));
+        }catch (ActivityNotFoundException e){
+            startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse("https://play.google.com/store/apps/details?id=com.saurabh.socialdistancing")));
+        }
+    }
+    private void share(){
+        Intent shareintent = new Intent();
+        shareintent.setAction(Intent.ACTION_SEND);
+        shareintent.putExtra(Intent.EXTRA_TEXT,"https://play.google.com/store/apps/details?id=com.example.ratatouille");
+        shareintent.setType("text/plain");
+        startActivity(Intent.createChooser(shareintent,"share via"));
+    }
 
->>>>>>> a0a5e819e72da8c15e4d69c7fcd8e25527f4ad59
     private void SignOut() {
 
         FirebaseAuth firebaseAuth=FirebaseAuth.getInstance();
@@ -170,6 +190,14 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
 
         Toast.makeText(this, "Profile icon clicked ! ", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(this, UserProfileActivity.class));
+
+    }
+
+    private void StartAboutusActivity()
+    {
+
+        Toast.makeText(this, "Profile icon clicked ! ", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this, AboutUsActivity.class));
 
     }
 }
