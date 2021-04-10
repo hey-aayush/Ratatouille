@@ -20,7 +20,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-<<<<<<< HEAD
+
             <ImageView
                 android:id="@+id/edit_profile"
                 android:layout_width="30dp"

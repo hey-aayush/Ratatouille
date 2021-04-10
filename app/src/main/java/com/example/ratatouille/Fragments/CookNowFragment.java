@@ -37,7 +37,7 @@ import java.util.HashSet;
 public class CookNowFragment extends Fragment {
 
     private static final String[] INGREDIENTS = new String[]{
-            "butter", "cocoa", "eggs", "flour", "sugar", "whiteSugar"
+            "butter", "cocoa", "eggs", "flour", "sugar", "whiteSugar", "milk",
     };
 
     private static final String[] MOODS = new String[]{
@@ -219,7 +219,7 @@ public class CookNowFragment extends Fragment {
 
     }
 
-
+    // Query for the first time from firebase to store recipes locally
     public void firstQuery(){
         fstore.collection("recipesDetails")
                 .get()
@@ -246,9 +246,10 @@ public class CookNowFragment extends Fragment {
 
     }
     public void getQueryResult() {
-        Toast.makeText(getContext(), ingredientMap.size() + " ingredient.size", Toast.LENGTH_SHORT).show();
+
         HashSet<Recipes> resultList = new HashSet<>();
         HashSet<Recipes> tempList = new HashSet<>();
+
         // for adding recipes according to ingredients which is present
         int count = 0;
         Toast.makeText(getContext(), ingredientPresent.size() + " ", Toast.LENGTH_SHORT).show();
@@ -256,7 +257,7 @@ public class CookNowFragment extends Fragment {
             resultList = new HashSet<>();
             if(ingredientMap.containsKey(ingredient)){
                 for(Recipes r: ingredientMap.get(ingredient)){
-                    if(count==0)
+                    if(count==0)               // for count = 0 , tmpList is empty
                         resultList.add(r);
                     else{
                         if(tempList.contains(r)){
@@ -269,16 +270,17 @@ public class CookNowFragment extends Fragment {
             count++;
         }
 
-        // when no ingredients present tag chosen
+        // when no ingredient chosen
         if(ingredientPresent.size()==0){
             for(Recipes r: recipeList){
                 resultList.add(r);
             }
         }
 
+        // HashSet for removing unwanted recipes
         HashSet<Recipes> removeList = new HashSet<>();
 
-        // for mood list
+        // for filtering according to mood list
         for(String s : mood){
             for(Recipes r: resultList){
                 if(!r.getMoods().contains(s)){
@@ -287,13 +289,13 @@ public class CookNowFragment extends Fragment {
             }
 
         }
-
+        // Removing unwanted recipes
         for(Recipes r: removeList){
             if(resultList.contains(r))
                 resultList.remove(r);
         }
         removeList.clear();
-        // for removing ingredients
+        // for removing ingredients which is absent
         for(String ingredient: ingredientAbsent){
             if(ingredientMap.containsKey(ingredient)){
                 for(Recipes r: ingredientMap.get(ingredient)){
@@ -303,7 +305,6 @@ public class CookNowFragment extends Fragment {
                 }
             }
         }
-        Log.d(TAG, "+++++++++++++++++++++++++  Error in size " + removeList.size());
         for(Recipes r: removeList){
             if(resultList.contains(r))
                 resultList.remove(r);
@@ -324,6 +325,7 @@ public class CookNowFragment extends Fragment {
 
         Toast.makeText(getContext(), " " + check, Toast.LENGTH_SHORT).show();
 
+        // for filtering according to veg/non-veg
         for(Recipes r: resultList){
             if(check){
                 if(r.isVeg()){
@@ -335,6 +337,7 @@ public class CookNowFragment extends Fragment {
                 }
             }
         }
+        // adding filtered recipes into recipes list
         for(Recipes r: removeList){
             if(resultList.contains(r))
                 resultList.remove(r);
