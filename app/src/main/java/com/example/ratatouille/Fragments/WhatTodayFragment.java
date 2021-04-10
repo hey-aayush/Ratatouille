@@ -12,8 +12,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.ratatouille.Activity.SurveyAnswer;
 import com.example.ratatouille.Adapters.WhatTodayAdapter;
 import com.example.ratatouille.Models.Recipes;
+import com.example.ratatouille.Models.User;
 import com.example.ratatouille.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -34,8 +36,19 @@ import java.util.List;
 
 public class WhatTodayFragment extends Fragment {
 
+    private FirebaseAuth firebaseAuth;
+    private FirebaseUser user;
+    private FirebaseFirestore db;
+    private DocumentReference dbRef;
 
-    public static List<Recipes> recipes=new ArrayList<>();
+    private String reg_food, sp_sw_sr;
+    private int cooking, fastfood, health;
+    private String qDiet;
+    private boolean isVeg;
+
+    private User userDetails;
+
+    public static List<Recipes> recipes;
 
     private static final String TAG = "WhatTodayFrag";
 
@@ -54,6 +67,8 @@ public class WhatTodayFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View RootView = inflater.inflate(R.layout.what_today_fragment, container, false);
 
+        recipes = new ArrayList<>();
+        getRecipieData();
 
         if(recipes.size()!=0)
         {
@@ -107,9 +122,81 @@ public class WhatTodayFragment extends Fragment {
         return RootView;
     }
 
+    private void getRecipieData() {
 
+        db = FirebaseFirestore.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
+        user = firebaseAuth.getCurrentUser();
+        dbRef = db.collection("usersDetails").document(user.getUid());
+        CollectionReference recipesDbRef = db.collection("recipesDetails");
+        Log.d(TAG, "User UID=" + user.getUid());
 
+        dbRef.get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
 
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document != null) {
 
+                                Log.d(TAG, "DocumentSnapshot data: " + document.getData());
 
+                                userDetails = document.toObject(User.class);
+
+                                reg_food = userDetails.getReg_food();
+                                sp_sw_sr = userDetails.getSp_sw_sr();
+                                isVeg = userDetails.isVeg();
+                                cooking = userDetails.getCooking();
+                                fastfood = userDetails.getFastfood();
+                                health = userDetails.getHealth();
+
+                                Log.d(TAG, "user = " + userDetails.toString());
+
+                                recipes = new ArrayList<>();
+
+                                Query query;
+
+                                if (isVeg == true) {
+//                                    query = recipesDbRef.whereEqualTo("veg", true).whereArrayContains("moods", sp_sw_sr).orderBy("noOfLikes").orderBy("cookTimeMin").orderBy("noOfFavourites").limit(10);
+                                    query = recipesDbRef.whereEqualTo("veg", true).whereArrayContains("moods", sp_sw_sr).orderBy("noOfLikes", Query.Direction.DESCENDING).orderBy("cookTimeMin");
+                                } else {
+                                    // non-veg , check for mood, and order by diet in ascending order "non-veg" < "veg"
+                                    query = recipesDbRef.whereArrayContains("moods", sp_sw_sr).orderBy("veg").orderBy("noOfLikes", Query.Direction.DESCENDING).orderBy("cookTimeMin").limit(10);
+                                }
+
+                                query.get()
+                                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                if (task.isSuccessful()) {
+                                                    Log.d(TAG, "task result size = " + (task.getResult()).size());
+                                                    for (QueryDocumentSnapshot document : task.getResult()) {
+//                                                            Log.d(TAG, document.getId() + " => " + document.getData());
+                                                        Recipes recipe = new Recipes(document);
+                                                        Log.d(TAG, "recipe = " + recipe.toString());
+                                                        recipes.add(recipe);
+                                                        Log.d(TAG, "recipes size = " + recipes.size());
+//                                                            recipes.add(document.toObject(Recipe.class));
+                                                    }
+
+                                                    Recipes.RecipeCustomSortingComparator comparator = new Recipes.RecipeCustomSortingComparator();
+                                                    comparator.setUserDetails(userDetails);
+                                                    Collections.sort(recipes, comparator);
+
+                                                } else {
+                                                    Log.d(TAG, "Error getting documents: ", task.getException());
+                                                }
+                                            }
+                                        });
+
+                            } else {
+                                Log.d(TAG, "No such document");
+                            }
+                        } else {
+                            Log.d("WhatToday dbRef.get", " get failed with ", task.getException());
+                        }
+                    }
+                });
+    }
 }

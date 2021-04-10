@@ -4,6 +4,8 @@ import android.util.Log;
 
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 
 public class Recipes {
@@ -53,7 +55,27 @@ public class Recipes {
         this.region=region;
     }
 
+    public Recipes(QueryDocumentSnapshot document){
 
+        this.recipeId = document.getString("recipeId");
+        this.recipeName = document.getString("recipeName");
+        this.recipeDescription = document.getString("recipeDescription");
+//        this.diet = document.getString("diet");
+        this.isVeg = document.getBoolean("veg");
+        this.recipeImageUrl = document.getString("recipeImageUrl");
+        this.chefId = document.getString("chefId");
+        this.chefName = document.getString("chefName");
+        this.timeStamp = (long) document.get("timeStamp");
+        this.ingredients = (List<String>) document.get("ingredients");
+        this.moods = (List<String>) document.get("moods");
+        this.cookTimeMin = ((Long) document.get("cookTimeMin")).intValue();
+        this.noOfLikes = ((Long) document.get("noOfLikes")).intValue();
+//        this.noOfFavourites = ((Long) document.get("noOfFavourites")).intValue();
+        this.region = (String) document.get("region");
+
+//        Log.d(TAG,  " recipeId " + document.getString("recipeId") + "recipeName = " + document.getString("recipeName") );
+
+    }
 
     public String getRecipeId() {
         return recipeId;
@@ -176,4 +198,88 @@ public class Recipes {
     public void setRegion(String region) {
         this.region = region;
     }
+
+    @Override
+    public String toString() {
+        return "Recipes{" +
+                "recipeId='" + recipeId + '\'' +
+                ", recipeName='" + recipeName + '\'' +
+                ", recipeImageUrl='" + recipeImageUrl + '\'' +
+                ", cookTimeMin=" + cookTimeMin +
+                ", ingredients=" + ingredients +
+                ", moods=" + moods +
+                ", recipeDescription='" + recipeDescription + '\'' +
+                ", chefId='" + chefId + '\'' +
+                ", chefName='" + chefName + '\'' +
+                ", timeStamp=" + timeStamp +
+                ", noOfLikes=" + noOfLikes +
+                ", isVeg=" + isVeg +
+                ", healthy=" + healthy +
+                ", region='" + region + '\'' +
+                '}';
+    }
+
+    public static class RecipeCustomSortingComparator implements Comparator<Recipes> {
+
+        private User userDetails;
+
+        public void setUserDetails(User userDetails) {
+            this.userDetails = userDetails;
+        }
+
+        @Override
+        public int compare(Recipes recipe1, Recipes recipe2) {
+
+            //comparing "vegetarian" and "non-vegetarian"
+
+            int val1=0, val2=0;
+            if(recipe1.isVeg() == userDetails.isVeg()) {
+                val1-=500;
+            }
+            if(recipe2.isVeg() == userDetails.isVeg()) {
+                val2+=500;
+            }
+
+            if(userDetails.getCooking() != 0){
+                int v = userDetails.getCooking();
+                val1+=((recipe1.cookTimeMin/v)*(recipe1.cookTimeMin/v));
+                val2+=((recipe2.cookTimeMin/v)*(recipe2.cookTimeMin/v));
+            } else {
+                val1+=((recipe1.cookTimeMin*2)*(recipe1.cookTimeMin*2));
+                val2+=((recipe2.cookTimeMin*2)*(recipe2.cookTimeMin*2));
+            }
+
+            int ff = userDetails.getFastfood();
+            if(ff < 5) {
+                if(recipe1.getMoods().contains("fast food")) {
+                    val1+=(5-ff)*50;
+                }
+                if(recipe1.getMoods().contains("fast food")) {
+                    val2+=(5-ff)*50;
+                }
+            }
+
+            // using no. of likes ; actually should be ((recipe1.noOfLikes/totalUsers)*100)*5;
+            val1-=(recipe1.noOfLikes)*10;
+            val2-=(recipe2.noOfLikes)*10;
+
+            //comparing region of recipes
+            if(recipe1.getRegion() != null){
+                if((recipe1.getRegion()).equalsIgnoreCase(userDetails.getReg_food())){
+                    val1-=200;
+                }
+                if((recipe2.getRegion()).equalsIgnoreCase(userDetails.getReg_food())){
+                    val1-=200;
+                }
+            }
+
+            if(val1 <= val2){
+                return -1;
+            } else if(val1 > val2){
+                return 1;
+            }
+            return 0;
+        }
+    }
+
 }
