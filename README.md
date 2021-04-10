@@ -10,9 +10,12 @@ An android app that lets you post/share your best recipes and search food recipe
 Also get recommened about dishes you might be interested in according to your preferences.
 
 ## Presentation Link:
-  <a href="https://docs.google.com/presentation/d/1NEbqpM6J6UkmHN_J6NsgOhKvDU6fkfnli4OIg1lh-pk/edit?usp=sharing"> Presentation link here </a>
+  <a href="https://docs.google.com/presentation/d/1ejRPP7dfhKtMEmDf_YVy83sp2sQ44DSbkS_ryOTR0Qk/edit?usp=sharing"> Presentation link here </a>
   
   
 Team Name: Null
 
+* [Aayush Kumar Shandilya](https://github.com/hey-aayush)
+* [Aayush Kumar Shandilya](https://github.com/hey-aayush)
+* [Aayush Kumar Shandilya](https://github.com/hey-aayush)
 * [Aayush Kumar Shandilya](https://github.com/hey-aayush)
