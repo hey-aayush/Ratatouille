@@ -33,7 +33,7 @@ public class Login extends AppCompatActivity {
     private Button mLoginBtn;
     private TextView mCreateBtn, forgotTextLink;
     private ProgressBar progressBar;
-    private FirebaseAuth mAuth;
+    public static FirebaseAuth mAuth;
     private FirebaseUser user;
 
     @Override
@@ -55,9 +55,6 @@ public class Login extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), StartActivity.class));
             finish();
         }
-
-
-
 
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override

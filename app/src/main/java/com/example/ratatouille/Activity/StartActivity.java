@@ -11,20 +11,38 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ratatouille.Authentication.Login;
 import com.example.ratatouille.Fragments.CookNowFragment;
 import com.example.ratatouille.Fragments.PostFragment;
 import com.example.ratatouille.Fragments.WhatTodayFragment;
+import com.example.ratatouille.Models.User;
 import com.example.ratatouille.R;
 import com.example.ratatouille.databinding.ActivityStartBinding;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
 
 public class StartActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
     ActivityStartBinding binding;
+    private ImageView nav_header_img;
+    private TextView nav_header_name;
+    private TextView nav_header_email;
+
+    static public User user;
+    static public String userId;
+    static public FirebaseFirestore fStore;
+    static public FirebaseStorage firebaseStorage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +52,29 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
 
         setSupportActionBar(binding.toolbar);
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, binding.drawerLayout, binding.toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        userId=Login.mAuth.getUid();
+        fStore=FirebaseFirestore.getInstance();
+        firebaseStorage=FirebaseStorage.getInstance();
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, binding.drawerLayout, binding.toolbar,R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         binding.drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         binding.navView.setNavigationItemSelectedListener(this);
+        View header = binding.navView.getHeaderView(0);
+
+        //nav_header_img= (ImageView) header.findViewById(R.id.nav_header_img);//when user img will get uploaded then it will be required
+        nav_header_email=(TextView) header.findViewById(R.id.nav_header_email);
+        nav_header_name=(TextView) header.findViewById(R.id.nav_header_name);
+
+        fStore.collection("usersDetails").document(userId).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                user=documentSnapshot.toObject(User.class);
+                nav_header_name.setText(user.getName());
+                nav_header_email.setText(user.getEmail());
+            }
+        });
+
 
         // mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         binding.bottomNavigation.setOnNavigationItemSelectedListener(navListener);
