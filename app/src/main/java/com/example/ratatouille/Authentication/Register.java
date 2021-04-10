@@ -13,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.ratatouille.Activity.StartActivity;
+import com.example.ratatouille.Activity.Survey_Form;
 import com.example.ratatouille.Models.User;
 import com.example.ratatouille.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -145,9 +146,10 @@ public class Register extends AppCompatActivity {
                                 public void onFailure(@NonNull Exception e) {
                                     Log.d(TAG, "userData failure: " + e.toString());
                                 }
-                            })
-                            ;
-                            startActivity(new Intent(getApplicationContext(), StartActivity.class));
+                            });
+
+//                            startActivity(new Intent(getApplicationContext(), StartActivity.class));
+                            startActivity(new Intent(getApplicationContext(), Survey_Form.class));
                         }else {
                             Toast.makeText(Register.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             //progressBar.setVisibility(View.GONE);
