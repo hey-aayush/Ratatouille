@@ -13,7 +13,6 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.ratatouille.Activity.StartActivity;
-import com.example.ratatouille.MainActivity;
 import com.example.ratatouille.Models.User;
 import com.example.ratatouille.R;
 import com.google.android.gms.tasks.OnCompleteListener;

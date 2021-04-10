@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ratatouille">
         <activity android:name=".Activity.StartActivity"></activity>
-        <activity android:name=".MainActivity" />
         <activity android:name=".Authentication.Register" />
         <activity android:name=".Authentication.Login">
             <intent-filter>
