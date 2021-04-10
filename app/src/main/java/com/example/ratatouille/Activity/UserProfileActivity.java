@@ -1,15 +1,12 @@
 package com.example.ratatouille.Activity;
 
 import androidx.annotation.NonNull;
-<<<<<<< HEAD
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-=======
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
->>>>>>> a0a5e819e72da8c15e4d69c7fcd8e25527f4ad59
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -20,7 +17,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-<<<<<<< HEAD
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
@@ -33,8 +29,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ratatouille.Adapters.RecipeViewAdapter;
 import com.example.ratatouille.Authentication.Login;
+import com.example.ratatouille.Models.Recipes;
+import com.example.ratatouille.Models.User;
 import com.example.ratatouille.R;
+import com.example.ratatouille.databinding.ActivityUserProfileBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -51,7 +51,10 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+
+import com.google.firebase.firestore.QuerySnapshot;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -75,8 +78,7 @@ public class UserProfileActivity extends AppCompatActivity {
     private String userProfileImageUrl;
 
     private FirebaseAuth firebaseAuth;
-    private FirebaseUser user;
-    private FirebaseFirestore db;
+//    private FirebaseFirestore db;
     private DocumentReference dbRef;
 
     private StorageReference storageReference;          //storage
@@ -87,43 +89,27 @@ public class UserProfileActivity extends AppCompatActivity {
     String[] storagePermissions;
 
     private ProgressDialog pd;
-=======
-import android.util.Log;
 
-import com.example.ratatouille.Adapters.RecipeViewAdapter;
-import com.example.ratatouille.Models.Recipes;
-import com.example.ratatouille.Models.User;
-import com.example.ratatouille.R;
-import com.example.ratatouille.databinding.ActivityStartBinding;
-import com.example.ratatouille.databinding.ActivityUserProfileBinding;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.storage.FirebaseStorage;
-
-import java.util.ArrayList;
-
-public class UserProfileActivity extends AppCompatActivity {
+    User user;
 
     FirebaseFirestore fstore;
-    User user;
+    private FirebaseUser fUser;
     ArrayList<Recipes> recipes;
     ActivityUserProfileBinding binding;
     RecipeViewAdapter recipeViewAdapter;
->>>>>>> a0a5e819e72da8c15e4d69c7fcd8e25527f4ad59
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-<<<<<<< HEAD
-        setContentView(R.layout.activity_user_profile);
 
-        db = FirebaseFirestore.getInstance();
+        binding = ActivityUserProfileBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+//        db = FirebaseFirestore.getInstance();
+        fstore=StartActivity.fStore;
         firebaseAuth = FirebaseAuth.getInstance();
-        user = firebaseAuth.getCurrentUser();
-        dbRef = db.collection("usersDetails").document(user.getUid());
+        fUser = firebaseAuth.getCurrentUser();
+        dbRef = fstore.collection("usersDetails").document(fUser.getUid());
         storageReference = FirebaseStorage.getInstance().getReference();
 
         imgProfile = (CircleImageView)findViewById(R.id.profilepageProfileImage);
@@ -257,14 +243,14 @@ public class UserProfileActivity extends AppCompatActivity {
         pd.show();
 
         //before changing the password re-authenticate the user
-        AuthCredential authCredential = EmailAuthProvider.getCredential(user.getEmail(), oldPassword);
-        user.reauthenticate(authCredential)
+        AuthCredential authCredential = EmailAuthProvider.getCredential(fUser.getEmail(), oldPassword);
+        fUser.reauthenticate(authCredential)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         //successfully authenticated, begin update
 
-                        user.updatePassword(newPassword)
+                        fUser.updatePassword(newPassword)
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
@@ -291,10 +277,8 @@ public class UserProfileActivity extends AppCompatActivity {
                         Toast.makeText(UserProfileActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
-=======
-        binding = ActivityUserProfileBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-        fstore=StartActivity.fStore;
+
+
         user=StartActivity.user;
         recipes=new ArrayList<Recipes>();
         recipeViewAdapter = new RecipeViewAdapter(this,recipes,fstore);
@@ -319,7 +303,6 @@ public class UserProfileActivity extends AppCompatActivity {
                 }
             });
         }
->>>>>>> a0a5e819e72da8c15e4d69c7fcd8e25527f4ad59
     }
 
     private void showEditProfileDialog() {
@@ -329,7 +312,7 @@ public class UserProfileActivity extends AppCompatActivity {
          * 3) Edit Password
          * */
 
-        String options[] = {"Edit Profile Picture", "Edit Name", "Edit Password"};
+        String options[] = {"Edit Profile Picture", "Edit Name", "Edit Password", "Edit Preferences"};
 
         //alert dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(UserProfileActivity.this);
@@ -351,6 +334,10 @@ public class UserProfileActivity extends AppCompatActivity {
                     //Edit Password clicked
                     pd.setMessage("Updating Password...");
                     showChangePasswordDialog();
+                } else if(which == 3) {
+                    //Edit Preferences clicked
+                    pd.setMessage("Updating Preferences...");
+                    startActivity(new Intent(getApplicationContext(), Survey_Form.class));
                 }
             }
         });

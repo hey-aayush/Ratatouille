@@ -141,10 +141,6 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
         return true;
     }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> a0a5e819e72da8c15e4d69c7fcd8e25527f4ad59
     private void SignOut() {
 
         FirebaseAuth firebaseAuth=FirebaseAuth.getInstance();
