@@ -109,6 +109,7 @@ public class UserProfileActivity extends AppCompatActivity {
         fstore=StartActivity.fStore;
         firebaseAuth = FirebaseAuth.getInstance();
         fUser = firebaseAuth.getCurrentUser();
+        user=StartActivity.user;
         dbRef = fstore.collection("usersDetails").document(fUser.getUid());
         storageReference = FirebaseStorage.getInstance().getReference();
 
