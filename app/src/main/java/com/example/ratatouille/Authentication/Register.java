@@ -79,14 +79,18 @@ public class Register extends AppCompatActivity {
                     mPassword.setError("Password does not match");  //checking password equal to confirm password or not
                     return;
                 }
+
                 progressBar.setVisibility(View.VISIBLE);
-                mRegisterBtn.setVisibility(View.GONE);
+                //mRegisterBtn.setVisibility(View.GONE);
 
 
                 // register the user in firebase
                 mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+
+                        progressBar.setVisibility(View.GONE);
+
                         if(task.isSuccessful()){
                             // send verification link
                             FirebaseUser fuser = mAuth.getCurrentUser();
@@ -94,14 +98,13 @@ public class Register extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Toast.makeText(Register.this, "Verification Email Has been Sent.", Toast.LENGTH_SHORT).show();
-                                    progressBar.setVisibility(View.GONE);
                                     mRegisterBtn.setVisibility(View.VISIBLE);
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
                                     Log.d(TAG, "onFailure: Email not sent " + e.getMessage());
-                                    progressBar.setVisibility(View.GONE);
+
                                     mRegisterBtn.setVisibility(View.VISIBLE);
                                 }
                             });
