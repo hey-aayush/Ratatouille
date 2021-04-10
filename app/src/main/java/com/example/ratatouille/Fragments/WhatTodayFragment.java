@@ -20,6 +20,7 @@ import com.example.ratatouille.Models.Recipes;
 import com.example.ratatouille.Models.User;
 import com.example.ratatouille.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -80,10 +81,6 @@ public class WhatTodayFragment extends Fragment {
         check(RootView);
 
         Log.d(TAG, "after getrecipie");
-
-
-
-
 
 
 
@@ -178,7 +175,7 @@ public class WhatTodayFragment extends Fragment {
 
                                 Query query;
 
-                                if (isVeg == true) {
+                                if (isVeg) {
 //                                    query = recipesDbRef.whereEqualTo("veg", true).whereArrayContains("moods", sp_sw_sr).orderBy("noOfLikes").orderBy("cookTimeMin").orderBy("noOfFavourites").limit(10);
                                     query = recipesDbRef.whereEqualTo("veg", true).whereArrayContains("moods", sp_sw_sr).orderBy("noOfLikes", Query.Direction.DESCENDING).orderBy("cookTimeMin");
                                 } else {
@@ -204,9 +201,9 @@ public class WhatTodayFragment extends Fragment {
                                                     Recipes.RecipeCustomSortingComparator comparator = new Recipes.RecipeCustomSortingComparator();
                                                     comparator.setUserDetails(userDetails);
                                                     Collections.sort(recipes, comparator);
+                                                    adapter.notifyDataSetChanged();
                                                     progressBar.setVisibility(View.GONE);
                                                     check(RootView);
-                                                    adapter.notifyDataSetChanged();
 
 
                                                 } else {

@@ -217,7 +217,7 @@ public class addRecipe extends AppCompatActivity {
                 recipeDescription = binding.addRecipeDescriptionInput.getText().toString().trim();
                 timestamp = (new Date()).getTime();
 
-                isVeg=!binding.isVegitarian.isChecked();
+                isVeg=binding.isVegitarian.isChecked();
 
                 Log.d(TAG, "Chef Id :" + chefId);
 

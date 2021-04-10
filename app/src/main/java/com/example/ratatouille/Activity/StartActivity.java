@@ -52,7 +52,7 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
 
         setSupportActionBar(binding.toolbar);
 
-        userId=Login.mAuth.getUid();
+        userId=FirebaseAuth.getInstance().getUid();
         fStore=FirebaseFirestore.getInstance();
         firebaseStorage=FirebaseStorage.getInstance();
 
@@ -141,7 +141,10 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
         return true;
     }
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> a0a5e819e72da8c15e4d69c7fcd8e25527f4ad59
     private void SignOut() {
 
         FirebaseAuth firebaseAuth=FirebaseAuth.getInstance();
@@ -150,15 +153,14 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
         if(mFirebaseUser != null) {
 
             Toast.makeText(this, "Logout txt clicked by - " + mFirebaseUser.getEmail(), Toast.LENGTH_SHORT).show();
+            finishAffinity();
             firebaseAuth.signOut();
             Toast.makeText(this, "Logout success", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, Login.class));
-            // finish();
-            finish();
 
         } else {
+            finishAffinity();
             startActivity(new Intent(this, Login.class));
-            // finish();
             finish();
         }
     }
