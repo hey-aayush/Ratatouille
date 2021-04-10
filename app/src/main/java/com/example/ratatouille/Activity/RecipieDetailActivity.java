@@ -21,7 +21,7 @@ public class RecipieDetailActivity extends AppCompatActivity {
 
         Recipes model = (Recipes) getIntent().getSerializableExtra("recipie_model");
 
-        activityRecipieDetailBinding.category.setText(model.getCookTimeMin());
+        activityRecipieDetailBinding.category.setText(String.valueOf(model.getCookTimeMin()));
         activityRecipieDetailBinding.country.setText(model.getRegion());
         activityRecipieDetailBinding.instructions.setText( model.getRecipeDescription());
 
