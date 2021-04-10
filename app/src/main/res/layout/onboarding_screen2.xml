@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="30dp"
+    android:id="@+id/slideLayout"
+    android:background="@color/colorBackground"
+    >
+
+    <ImageView
+        android:id="@+id/veg_nonveg_ic"
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:src="@drawable/ic_veg_nonveg"
+        android:alpha="0.5"
+        ></ImageView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/veg_nonveg_ic"
+        >
+
+        <RadioGroup
+            android:id="@+id/radioGrp2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                android:text="Which of the following do you prefer?"
+                android:textColor="#026E9F"
+                android:textSize="35sp" />
+
+            <RadioButton
+                android:id="@+id/radio_opt4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="70dp"
+                android:layout_marginTop="40dp"
+                android:checked="true"
+                android:text="Vegetarian"
+                android:textColor="#037108"
+                android:textSize="25sp" />
+
+            <RadioButton
+                android:id="@+id/radio_opt5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="65dp"
+                android:layout_marginTop="20dp"
+                android:text="Non-vegetarian"
+                android:textColor="#037108"
+                android:textSize="25sp" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

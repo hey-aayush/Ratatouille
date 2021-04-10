@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Ratatouille">
+        <activity android:name=".Activity.Survey_Form" />
         <activity android:name=".Activity.StartActivity"></activity>
         <activity android:name=".Authentication.Register" />
         <activity android:name=".Authentication.Login">
