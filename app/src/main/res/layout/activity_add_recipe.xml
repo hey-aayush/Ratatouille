@@ -64,7 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="16dp"
                 android:gravity="top"
                 android:hint="Recipe Description"
@@ -234,6 +234,107 @@
 
             </androidx.cardview.widget.CardView>
 
+
+
+            <Switch
+                android:id="@+id/isVegitarian"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Is this Recipe Vegetarian ?"
+                android:textOff="Non-Veg"
+                android:textOn="Veg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/addRecipeDescriptionInput" />
+
+            <TextView
+                android:id="@+id/CookingHealthText"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="Rate this Recipe Heath wise on the scale of 0-10"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/isVegitarian" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/addHealthCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/CookingHealthText">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|center_horizontal"
+                android:orientation="horizontal"
+                android:padding="4dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/addHealtInput"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:layout_weight="1"
+                    android:hint="Rating" />
+
+                <Button
+                    android:id="@+id/addHealthBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add"
+                    android:textAllCaps="false" />
+            </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/CookingRegionText"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="Enter Region of this Recipe"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/addHealthCard" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/addRegionCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/CookingRegionText">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center|center_horizontal"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/addRegionInput"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:layout_weight="1"
+                        android:hint="Region" />
+
+                    <Button
+                        android:id="@+id/addRegionBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Add"
+                        android:textAllCaps="false" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
             <Button
                 android:id="@+id/addRecipeBtn"
                 android:layout_width="wrap_content"
@@ -244,7 +345,7 @@
                 android:textAllCaps="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/addRecipeDescriptionInput" />
+                app:layout_constraintTop_toBottomOf="@+id/addRegionCard" />
 
             <ProgressBar
                 android:id="@+id/addRecipeProgressBar"
@@ -255,7 +356,7 @@
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/addRecipeDescriptionInput" />
+                app:layout_constraintTop_toBottomOf="@+id/addRegionCard" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

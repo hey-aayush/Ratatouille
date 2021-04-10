@@ -58,6 +58,9 @@ public class addRecipe extends AppCompatActivity {
     static long timestamp;
     static String recipeId;
     static int cookingTime;
+    static boolean isVeg;
+    static String region;
+    static int health;
     private Recipes recipe;
 
     String TAG = "Add Recipe Activity";
@@ -187,6 +190,22 @@ public class addRecipe extends AppCompatActivity {
             }
         });
 
+        binding.addHealthBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                health=Integer.parseInt(binding.addHealtInput.getText().toString().trim());
+                binding.CookingHealthText.setText("Health wise Rating : "+health+"/10");
+            }
+        });
+
+        binding.addRegionBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                region=binding.addRegionInput.getText().toString().trim();
+                binding.CookingRegionText.setText("Region : "+region);
+            }
+        });
+
         binding.addRecipeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -198,9 +217,11 @@ public class addRecipe extends AppCompatActivity {
                 recipeDescription = binding.addRecipeDescriptionInput.getText().toString().trim();
                 timestamp = (new Date()).getTime();
 
+                isVeg=!binding.isVegitarian.isChecked();
+
                 Log.d(TAG, "Chef Id :" + chefId);
 
-                recipe = new Recipes(recipeName, recipeDescription, chefId, chefName, timestamp, ingredients, moods, cookingTime);
+                recipe = new Recipes(recipeName, recipeDescription, chefId, chefName, timestamp, ingredients, moods, cookingTime,isVeg,health,region);
 
                 fStore.collection("recipesDetails").add(recipe).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
