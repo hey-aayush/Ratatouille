@@ -4,14 +4,11 @@ package com.example.ratatouille.Activity;
 
 public class SurveyAnswer {
 
-    private String veg_nonveg = "", sp_sw_sr = "", reg_food = "" ;
+    private String  sp_sw_sr = "", reg_food = "" ;
     private int health, fastfood, newfood, cooking;
+    private boolean veg = true;
 
     //getters and setters
-
-    public String getVeg_nonveg() {
-        return veg_nonveg;
-    }
 
     public String getSp_sw_sr() {
         return sp_sw_sr;
@@ -35,10 +32,6 @@ public class SurveyAnswer {
 
     public int getCooking() {
         return cooking;
-    }
-
-    public void setVeg_nonveg(String veg_nonveg) {
-        this.veg_nonveg = veg_nonveg;
     }
 
     public void setSp_sw_sr(String sp_sw_sr) {
@@ -65,6 +58,14 @@ public class SurveyAnswer {
         this.cooking = cooking;
     }
 
+    public boolean isVeg() {
+        return veg;
+    }
+
+    public void setVeg(boolean veg) {
+        this.veg = veg;
+    }
+
     //constructors for SurveyAnswer class
 
     SurveyAnswer(){
@@ -72,12 +73,17 @@ public class SurveyAnswer {
     }
 
     SurveyAnswer(String veg_nonveg, String sp_sw_sr, String reg_food, int health, int fastfood, int newfood, int cooking){
-        this.veg_nonveg = veg_nonveg;
-        this.sp_sw_sr = sp_sw_sr;
-        this.reg_food = reg_food;
+        this.sp_sw_sr = sp_sw_sr.toLowerCase();
+        this.reg_food = reg_food.toLowerCase();
         this.health = health;
         this.fastfood = fastfood;
         this.newfood = newfood;
         this.cooking = cooking;
+        if(veg_nonveg.equalsIgnoreCase("vegetarian")){
+            this.veg = true;
+        } else {
+            this.veg = false;
+        }
     }
+
 }
