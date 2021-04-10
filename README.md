@@ -12,6 +12,10 @@ Also get recommened about dishes you might be interested in according to your pr
 ## Presentation Link:
   <a href="https://docs.google.com/presentation/d/1ejRPP7dfhKtMEmDf_YVy83sp2sQ44DSbkS_ryOTR0Qk/edit?usp=sharing"> Presentation link here </a>
   
+## Technology Stack:
+  1) Android Studio 
+  2) Firebase
+  3) Java  
   
 Team Name: Null
 
