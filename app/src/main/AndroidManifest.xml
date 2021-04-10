@@ -7,7 +7,6 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,8 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Ratatouille">
-        <activity android:name=".Activity.addRecipe"></activity>
-        <activity android:name=".Authentication.Login"></activity>
+        <activity android:name=".Activity.UserProfileActivity"></activity>
+        <activity android:name=".Activity.addRecipe" />
+        <activity android:name=".Authentication.Login" />
         <activity android:name=".Activity.Survey_Form" />
         <activity android:name=".Activity.StartActivity" />
         <activity android:name=".Authentication.Register" />

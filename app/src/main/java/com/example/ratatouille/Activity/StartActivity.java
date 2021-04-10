@@ -56,26 +56,24 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
         fStore=FirebaseFirestore.getInstance();
         firebaseStorage=FirebaseStorage.getInstance();
 
-        fStore.collection("usersDetails").document(userId).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                user=documentSnapshot.toObject(User.class);
-            }
-        });
-
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, binding.drawerLayout, binding.toolbar,R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         binding.drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         binding.navView.setNavigationItemSelectedListener(this);
-
         View header = binding.navView.getHeaderView(0);
 
         //nav_header_img= (ImageView) header.findViewById(R.id.nav_header_img);//when user img will get uploaded then it will be required
         nav_header_email=(TextView) header.findViewById(R.id.nav_header_email);
         nav_header_name=(TextView) header.findViewById(R.id.nav_header_name);
 
-        nav_header_name.setText(user.getName());
-        nav_header_email.setText(user.getEmail());
+        fStore.collection("usersDetails").document(userId).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                user=documentSnapshot.toObject(User.class);
+                nav_header_name.setText(user.getName());
+                nav_header_email.setText(user.getEmail());
+            }
+        });
 
 
         // mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);

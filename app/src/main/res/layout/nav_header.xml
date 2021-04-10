@@ -3,18 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="176dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/red"
+    android:background="@color/redColor"
     android:gravity="bottom"
     android:orientation="vertical"
     android:padding="16dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
-<<<<<<< HEAD
-    <ImageView
-        android:id="@+id/nav_header_img"
-=======
-
     <de.hdodenhof.circleimageview.CircleImageView
->>>>>>> f8435244450186febde97f017c860f5619f740fd
+        android:id="@+id/nav_header_img"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:src="@drawable/ic_profileimage"
