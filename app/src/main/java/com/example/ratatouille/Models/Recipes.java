@@ -188,4 +188,15 @@ public class Recipes {
     public void setRegion(String region) {
         this.region = region;
     }
+
+    public String toShareString() {
+        return "Hey! checkout this Recipe by "+chefName+": \n\n" +
+                recipeName.toUpperCase() + "\n\n" +
+                "Cooking Time : " + cookTimeMin + "( mins)\n"+
+                "Ingredients required are " + ingredients +"\n\n"+
+                recipeDescription +"\n\n" +
+                "isVeg : " + isVeg + "\n"+
+                "healthy : " + healthy +"/10\n\n"+
+                recipeImageUrl + '\n';
+    }
 }

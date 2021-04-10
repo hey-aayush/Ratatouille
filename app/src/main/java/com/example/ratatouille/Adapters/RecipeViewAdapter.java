@@ -1,6 +1,7 @@
 package com.example.ratatouille.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,6 +70,13 @@ public class RecipeViewAdapter extends RecyclerView.Adapter<RecipeViewAdapter.Re
         }
 
         holder.binding.CookingTime.setText("CookingTime : "+ recipe.getCookTimeMin() +" mins");
+
+        holder.binding.shareIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                shareRecipe(recipe);
+            }
+        });
 
         if (recipe.getRecipeId()!=null) {
 
@@ -151,6 +159,21 @@ public class RecipeViewAdapter extends RecyclerView.Adapter<RecipeViewAdapter.Re
                 }
             });
         }
+    }
+
+    private void shareRecipe(Recipes recipe) {
+        String recipeText = recipe.toShareString();
+
+        /*Create an ACTION_SEND Intent*/
+        Intent intent = new Intent(android.content.Intent.ACTION_SEND);
+        /*This will be the actual content you wish you share.*/
+        String shareBody = recipeText;
+        /*The type of the content is text, obviously.*/
+        intent.setType("text/plain");
+        /*Applying information Subject and Body.*/
+        intent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+        /*Fire!*/
+        context.startActivity(Intent.createChooser(intent, "Share Recipe Via"));
     }
 
     @Override

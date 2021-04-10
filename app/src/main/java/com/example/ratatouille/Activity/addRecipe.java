@@ -194,14 +194,14 @@ public class addRecipe extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 health=Integer.parseInt(binding.addHealtInput.getText().toString().trim());
-                binding.CookingHealthText.setText("Health wise Rating : "+health+"/10");
+                binding.CookingHealthText.setText("Health wise Rating : "+health%10+"/10");
             }
         });
 
         binding.addRegionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                region=binding.addRegionInput.getText().toString().trim();
+                region=binding.addRegionInput.getText().toString().trim().toLowerCase();
                 binding.CookingRegionText.setText("Region : "+region);
             }
         });
