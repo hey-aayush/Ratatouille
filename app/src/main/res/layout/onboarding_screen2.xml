@@ -3,25 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:padding="30dp"
     android:id="@+id/slideLayout"
-    android:background="@color/colorBackground"
+    android:background="@drawable/foodd"
     >
-
-    <ImageView
-        android:id="@+id/veg_nonveg_ic"
-        android:layout_width="wrap_content"
-        android:layout_height="250dp"
-        android:src="@drawable/ic_veg_nonveg"
-        android:alpha="0.5"
-        ></ImageView>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_below="@+id/veg_nonveg_ic"
+        android:background="@drawable/card_login"
+
         >
 
         <RadioGroup
@@ -37,6 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
+                android:textStyle="bold"
                 android:layout_marginRight="20dp"
                 android:gravity="center"
                 android:text="Which of the following do you prefer?"
@@ -52,6 +46,7 @@
                 android:checked="true"
                 android:text="Vegetarian"
                 android:textColor="#037108"
+                android:textStyle="bold"
                 android:textSize="25sp" />
 
             <RadioButton
@@ -61,7 +56,8 @@
                 android:layout_marginLeft="65dp"
                 android:layout_marginTop="20dp"
                 android:text="Non-vegetarian"
-                android:textColor="#037108"
+                android:textColor="#EA2C1E"
+                android:textStyle="bold"
                 android:textSize="25sp" />
 
         </RadioGroup>

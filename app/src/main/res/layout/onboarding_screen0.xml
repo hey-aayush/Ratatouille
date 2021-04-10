@@ -3,33 +3,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:padding="30dp"
+    android:background="@drawable/foodh"
     android:orientation="vertical"
     android:id="@+id/slideLayout"
     >
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="250dp"
-        android:src="@drawable/welcome"
-        android:layout_marginTop="30dp"
-        android:alpha="0.8"
-        ></ImageView>
-
-
     <TextView
         android:id="@+id/desc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="207dp"
+        android:layout_height="100dp"
         android:layout_gravity="center"
-
-        android:layout_marginTop="40dp"
-
+        android:layout_marginTop="10dp"
+        android:background="@drawable/card_login"
         android:gravity="center"
-        android:text="Help us find your favourite dishes by answering a few simple questions."
-        android:textColor="@color/Orange"
-        android:textSize="30sp" />
+        android:text="Welcome to Ratatouille "
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
+    <TextView
+        android:layout_width="265dp"
+        android:layout_height="172dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/card_login"
+        android:text="Answer some interesting questions and enjoy Ratatouille"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
 </LinearLayout>
