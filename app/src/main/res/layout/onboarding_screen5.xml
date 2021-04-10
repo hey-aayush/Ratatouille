@@ -3,35 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:padding="30dp"
+    android:background="@drawable/foode"
     android:id="@+id/slideLayout"
     android:theme="@style/MyMaterialTheme"
     >
 
-  <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="400dp"
-        android:src="@drawable/french_fries"
-        android:layout_marginTop="150dp"
-        android:alpha="0.6"
-        ></ImageView>
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/card_login"
         android:orientation="vertical"
         >
 
-       <!-- <TextView
-            android:id="@+id/heading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="Question 4"
-            android:textColor="#6F28D5"
-            android:textSize="40sp" />-->
 
         <TextView
             android:id="@+id/question"
@@ -39,10 +24,11 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="40dp"
+            android:textStyle="bold"
             android:layout_marginRight="20dp"
             android:gravity="center"
             android:text="How much do you like fast foods ?"
-            android:textColor="#2C42BF"
+            android:textColor="#035C54"
             android:textSize="35sp" />
 
         <!-- Discrete slider -->
@@ -56,7 +42,7 @@
             android:valueTo="10.0"
             app:labelBehavior="floating"
             app:haloColor="@color/colorAccent"
-            app:thumbColor="@color/purple_500"
+            app:thumbColor="@color/colorPrimary"
             android:stepSize="1.0"  />
 
     </LinearLayout>

@@ -14,7 +14,8 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:text="Skip"
-        android:textColor="@color/colorAccent"
+        android:background="@color/TransparentColor"
+        android:textColor="@color/red"
         android:visibility="invisible"/>
 
     <androidx.viewpager.widget.ViewPager
@@ -31,7 +32,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
         android:text=""
-        android:textColor="@color/colorAccent"
+        android:background="@color/TransparentColor"
+        android:textColor="@color/red"
         android:visibility="invisible" />
 
     <Button
@@ -41,12 +43,14 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:text="Next"
-        android:textColor="@color/colorAccent"/>
+        android:background="@color/TransparentColor"
+        android:textColor="@color/red"/>
 
     <LinearLayout
         android:id="@+id/dotsLayout"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
+        android:background="@color/TransparentColor"
         android:layout_centerInParent="true"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal" >
