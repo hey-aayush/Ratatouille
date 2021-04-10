@@ -48,7 +48,7 @@ public class WhatTodayFragment extends Fragment {
 
     private User userDetails;
 
-    public static List<Recipes> recipes;
+    public static List<Recipes> recipes=new ArrayList<>();
 
     private static final String TAG = "WhatTodayFrag";
 
@@ -67,13 +67,26 @@ public class WhatTodayFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View RootView = inflater.inflate(R.layout.what_today_fragment, container, false);
 
-        recipes = new ArrayList<>();
+
+       // Recipes demo=new Recipes();
         getRecipieData();
 
-        if(recipes.size()!=0)
+        Log.d(TAG, "after getrecipie");
+
+       /* for(int i=0;i<5;i++)
         {
-            adapter = new WhatTodayAdapter(recipes, getContext());
-        }
+            Recipes temp=new Recipes();
+            temp.setRecipeDescription("gyuwveyucvbeqbvcqe");
+            temp.setRecipeName("effew");
+            temp.setRecipeImageUrl("https://firebasestorage.googleapis.com/v0/b/ratatoulile.appspot.com/o/RecipesImages%2F9Bxd8uMJBeL1cHXDJms6?alt=media&token=87895a04-70de-4059-9aaa-441d0a3fe5aa");
+            recipes.add(temp);
+        }*/
+        
+
+
+           adapter = new WhatTodayAdapter(recipes, getContext());
+
+
 
         viewPager = RootView.findViewById(R.id.viewPager_what_today);
         viewPager.setAdapter(adapter);
@@ -118,11 +131,14 @@ public class WhatTodayFragment extends Fragment {
 
             }
         });
-        //return inflater.inflate(R.layout.fragment_what_today,container,false);
+
         return RootView;
     }
 
     private void getRecipieData() {
+
+
+        Log.d(TAG, "getRecipieData Called");
 
         db = FirebaseFirestore.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
@@ -198,5 +214,7 @@ public class WhatTodayFragment extends Fragment {
                         }
                     }
                 });
+
+        Log.d(TAG, "getRecipieData end");
     }
 }

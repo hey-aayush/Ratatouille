@@ -2,6 +2,7 @@ package com.example.ratatouille.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.bumptech.glide.Glide;
 import com.example.ratatouille.Models.Recipes;
 import com.example.ratatouille.R;
 
@@ -21,10 +23,12 @@ public class WhatTodayAdapter extends PagerAdapter {
     private List<Recipes> recipes;
     private LayoutInflater layoutInflater;
     private Context context;
+    public static final String TAG="whattodayadapter";
 
     public WhatTodayAdapter(List<Recipes> models, Context context) {
         this.recipes = models;
         this.context = context;
+        Log.d(TAG, String.valueOf(recipes.size()));
     }
 
     @Override
@@ -46,20 +50,22 @@ public class WhatTodayAdapter extends PagerAdapter {
         ImageView imageView;
         TextView title, desc;
 
-        imageView = view.findViewById(R.id.image);
-        title = view.findViewById(R.id.title);
-        desc = view.findViewById(R.id.desc);
+        imageView = view.findViewById(R.id.image_whattoday);
+        title = view.findViewById(R.id.title_whattoday);
+        desc = view.findViewById(R.id.desc_whattoday);
+
+        Log.d(TAG, "instantiateItem: "+desc);
 
         // imageView.setImageResource(recipes.get(position).getImage());
         title.setText(recipes.get(position).getRecipeName());
         desc.setText(recipes.get(position).getRecipeDescription());
         imageView.setImageDrawable(null);
         if(recipes.get(position).getRecipeImageUrl()!=null) {
-          //  Glide.with(this.context).load(recipes.get(position).getRecipeImageUrl()).into(imageView);
+            Glide.with(this.context).load(recipes.get(position).getRecipeImageUrl()).into(imageView);
         }else{
-           // Glide.with(this.context).load(R.drawable.ic_post).into(imageView);
+            Glide.with(this.context).load(R.drawable.ic_post).into(imageView);
         }
-
+        Log.d(TAG, "instantiateItem: "+desc);
 
 
       /*  view.setOnClickListener(new View.OnClickListener() {
