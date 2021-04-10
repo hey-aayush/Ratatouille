@@ -127,10 +127,10 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_profile:
-                // StartProfileActivity();
+                 StartProfileActivity();
                 break;
             case R.id.nav_logout:
-                // SignOut();
+                 SignOut();
                 break;
             case R.id.nav_settingst:
                 // StartProfileActivity();
@@ -141,8 +141,7 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
         return true;
     }
 
-    //do not delete will be implemented later
-    /*private void SignOut() {
+    private void SignOut() {
 
         FirebaseAuth firebaseAuth=FirebaseAuth.getInstance();
 
@@ -150,24 +149,23 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
         if(mFirebaseUser != null) {
 
             Toast.makeText(this, "Logout txt clicked by - " + mFirebaseUser.getEmail(), Toast.LENGTH_SHORT).show();
+            finishAffinity();
             firebaseAuth.signOut();
             Toast.makeText(this, "Logout success", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, Login.class));
-            // finish();
-            finish();
 
         } else {
+            finishAffinity();
             startActivity(new Intent(this, Login.class));
-            // finish();
             finish();
         }
-    }*/
-//do not delete will be implemented later
-   /* private void StartProfileActivity()
+    }
+
+    private void StartProfileActivity()
     {
 
         Toast.makeText(this, "Profile icon clicked ! ", Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(this, ProfileActivity.class));
+        startActivity(new Intent(this, UserProfileActivity.class));
 
-    }*/
+    }
 }
