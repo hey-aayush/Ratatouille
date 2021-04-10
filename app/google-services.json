@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "956892634822",
+    "project_id": "ratatoulile",
+    "storage_bucket": "ratatoulile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:956892634822:android:a1675119e289bfc6c001c7",
+        "android_client_info": {
+          "package_name": "com.example.ratatouille"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "956892634822-0mel2dvh46r0u337bv8tjfgh41pvfthp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_NW9f6tnmkTVXs_BAklBty6iykDIzymU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "956892634822-0mel2dvh46r0u337bv8tjfgh41pvfthp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:956892634822:android:c35c2bb486d6a5c0c001c7",
+        "android_client_info": {
+          "package_name": "com.heyaayush.ratatouille"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "956892634822-0mel2dvh46r0u337bv8tjfgh41pvfthp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_NW9f6tnmkTVXs_BAklBty6iykDIzymU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "956892634822-0mel2dvh46r0u337bv8tjfgh41pvfthp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
