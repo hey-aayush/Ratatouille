@@ -8,8 +8,8 @@
             android:icon="@drawable/ic_baseline_account_circle_24"
             android:title="Profile" />
         <item
-            android:id="@+id/nav_settingst"
-            android:icon="@drawable/ic_settings"
+            android:id="@+id/nav_aboutus"
+            android:icon="@drawable/ic_baseline_turned_in_not_24"
             android:title="Settings" />
 
     </group>
