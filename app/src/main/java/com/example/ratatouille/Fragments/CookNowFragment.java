@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -37,11 +36,16 @@ import java.util.HashSet;
 public class CookNowFragment extends Fragment {
 
     private static final String[] INGREDIENTS = new String[]{
-            "butter", "cocoa", "eggs", "flour", "sugar", "whiteSugar", "milk",
+            "butter", "cocoa", "eggs", "flour", "sugar", "whiteSugar", "milk", "rava", "Chicken", "gram flour",
+            "mustard", "tomato", "curry leaves", "garlic", "salt", "urad dal", "rice", "onion", "oil", "chana dal",
+            "paneer", "potato", "cream", "garam masala", "lemon juice", "ginger", "garlic", "chillies", "lemon",
+            "nuts", "cardamom", "bread", "rice flour", "Vermicelli Pudding", "peanut", "jaggery", "pumpkin", "lime",
+            "yogurt", "termeric", "turmeric", "chana dal", "Tea leaves", "red kidney beans", "lentil", "ghee",
+            "Ladies fingers",
     };
 
     private static final String[] MOODS = new String[]{
-            "spicy", "sweet", "desert", "fast food"
+            "spicy", "sweet", "Desert", "fast food", "snack"
     };
 
     public RecipeViewAdapter getRecipeViewAdapter() {

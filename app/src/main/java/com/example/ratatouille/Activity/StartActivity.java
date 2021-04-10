@@ -117,24 +117,16 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
                 }
             };
 
-
-   /* @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_main, menu);
-        return true;
-    }*/
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.nav_profile:
+            case R.id.nav_profile:         // profile
                  StartProfileActivity();
                 break;
-            case R.id.nav_logout:
+            case R.id.nav_logout:          // for logout
                  SignOut();
                 break;
-            case R.id.nav_aboutus:
+            case R.id.nav_aboutus:         // for about us
                 StartAboutusActivity();
                 break;
             case R.id.nav_share:                //For sharing the app

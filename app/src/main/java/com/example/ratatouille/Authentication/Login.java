@@ -78,9 +78,6 @@ public class Login extends AppCompatActivity {
                 progressBar.setVisibility(View.VISIBLE);
                 mLoginBtn.setVisibility(View.GONE);
                 // authenticate the user with email and password
-                System.out.println(user);
-
-                Toast.makeText(Login.this, user + " ", Toast.LENGTH_SHORT).show();
                 mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {

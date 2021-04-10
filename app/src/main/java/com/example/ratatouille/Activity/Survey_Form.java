@@ -229,11 +229,8 @@ public class Survey_Form extends FragmentActivity {
         SurveyAnswer answer = new SurveyAnswer(veg_nonveg, sp_sw_sr, reg_food, health, fastfood, newfood, cooking);
 
         fstore = FirebaseFirestore.getInstance();
-
         String userID = FirebaseAuth.getInstance().getUid();
-
         DocumentReference userDataReference = fstore.collection("usersDetails").document(userID);
-
         userDataReference.get()
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
