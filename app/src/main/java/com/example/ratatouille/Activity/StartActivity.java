@@ -17,12 +17,15 @@ import com.example.ratatouille.Authentication.Login;
 import com.example.ratatouille.Fragments.CookNowFragment;
 import com.example.ratatouille.Fragments.PostFragment;
 import com.example.ratatouille.Fragments.WhatTodayFragment;
+import com.example.ratatouille.Models.User;
 import com.example.ratatouille.R;
 import com.example.ratatouille.databinding.ActivityStartBinding;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 
@@ -30,7 +33,8 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
 
     ActivityStartBinding binding;
 
-    static String userId;
+    static public User user;
+    static public String userId;
     static public FirebaseFirestore fStore;
     static public FirebaseStorage firebaseStorage;
 
@@ -42,9 +46,16 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
 
         setSupportActionBar(binding.toolbar);
 
-        userId= Login.mAuth.getUid();
+        userId=Login.mAuth.getUid();
         fStore=FirebaseFirestore.getInstance();
         firebaseStorage=FirebaseStorage.getInstance();
+
+        fStore.collection("usersDetails").document(userId).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                user=documentSnapshot.toObject(User.class);
+            }
+        });
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, binding.drawerLayout, binding.toolbar,R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         binding.drawerLayout.addDrawerListener(toggle);
