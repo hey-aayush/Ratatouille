@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.ratatouille.Activity.StartActivity;
 import com.example.ratatouille.MainActivity;
 import com.example.ratatouille.Models.User;
 import com.example.ratatouille.R;
@@ -147,7 +148,7 @@ public class Register extends AppCompatActivity {
                                 }
                             })
                             ;
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            startActivity(new Intent(getApplicationContext(), StartActivity.class));
                         }else {
                             Toast.makeText(Register.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             //progressBar.setVisibility(View.GONE);

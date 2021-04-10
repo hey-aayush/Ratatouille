@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Ratatouille</string>
+
+    <!-- bootom_nav_titles  -->
+    <string name="title_post">Posts</string>
+    <string name="title_cook_now">Cook Now</string>
+    <string name="title_what_today">What\'s Today</string>
 </resources>
