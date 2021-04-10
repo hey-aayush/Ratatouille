@@ -199,9 +199,10 @@
                     android:autoText="false"
                     android:elegantTextHeight="true"
                     android:showText="true"
-                    android:text="Is Vegitarian :"
+                    android:text="Veg/Non-veg"
                     android:textOff="Veg"
                     android:textOn="Non-Veg"
+                    android:id="@+id/isVeg"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/addCooktimeCard" />
