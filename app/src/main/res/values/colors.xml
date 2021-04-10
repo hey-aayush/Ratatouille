@@ -10,4 +10,8 @@
     <color name="redColor">#DF4E4E</color>
     <color name="greyishBackground">#DDD0AF</color>
     <color name="transparentWhite">#cccccc</color>
+    <color name="red">#F83B00</color>
+    <color name="semiTransparentColor">#ABFDFDFD</color>
+    <color name="TransparentColor">#00FDFDFD</color>
+
 </resources>

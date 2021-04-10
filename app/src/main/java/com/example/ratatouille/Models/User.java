@@ -65,4 +65,3 @@ public class User {
         this.region = region;
     }
 }
-
