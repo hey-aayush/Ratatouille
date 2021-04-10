@@ -55,7 +55,8 @@ public class Recipes {
         this.region=region;
     }
 
-    public Recipes(QueryDocumentSnapshot document){
+
+    public Recipes(QueryDocumentSnapshot document) {
 
         this.recipeId = document.getString("recipeId");
         this.recipeName = document.getString("recipeName");
@@ -74,6 +75,20 @@ public class Recipes {
         this.region = (String) document.get("region");
 
 //        Log.d(TAG,  " recipeId " + document.getString("recipeId") + "recipeName = " + document.getString("recipeName") );
+    }
+
+    public Recipes(String recipeName, String recipeDescription, String chefId, String chefName,long timeStamp,List<String> ingredient,List<String>moods,int cookTimeMin) {
+        this.recipeName = recipeName;
+        this.recipeDescription = recipeDescription;
+        this.chefId = chefId;
+        this.chefName=chefName;
+        this.timeStamp = timeStamp;
+        this.ingredients=ingredient;
+        this.moods=moods;
+        this.cookTimeMin=cookTimeMin;
+        this.isVeg=isVeg;
+        this.healthy=healthy;
+        this.region=region;
 
     }
 
@@ -282,4 +297,14 @@ public class Recipes {
         }
     }
 
+    public String toShareString() {
+        return "Hey! checkout this Recipe by "+chefName+": \n\n" +
+                recipeName.toUpperCase() + "\n\n" +
+                "Cooking Time : " + cookTimeMin + "( mins)\n"+
+                "Ingredients required are " + ingredients +"\n\n"+
+                recipeDescription +"\n\n" +
+                "isVeg : " + isVeg + "\n"+
+                "healthy : " + healthy +"/10\n\n"+
+                recipeImageUrl + '\n';
+    }
 }

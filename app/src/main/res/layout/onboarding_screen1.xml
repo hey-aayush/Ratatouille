@@ -3,26 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:padding="30dp"
+    android:background="@drawable/foodc"
     android:id="@+id/slideLayout"
     >
 
-    <ImageView
-
-        android:id="@+id/donutimg"
-        android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        android:src="@drawable/donut"
-        android:layout_marginTop="0dp"
-        android:alpha="0.7"
-        ></ImageView>
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_below="@+id/donutimg"
+        android:background="@drawable/card_login"
         >
 
         <RadioGroup
@@ -39,6 +30,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
+                android:textStyle="bold"
                 android:gravity="center"
                 android:text="Which of the following do you prefer ?"
                 android:textColor="#2C42BF"
@@ -52,6 +44,7 @@
                 android:layout_marginTop="30dp"
                 android:checked="true"
                 android:text="Spicy"
+                android:textStyle="bold"
                 android:textColor="#E91E63"
                 android:textSize="30sp" />
 
@@ -62,7 +55,8 @@
                 android:layout_marginLeft="90dp"
                 android:text="Sweet"
                 android:layout_marginTop="15dp"
-                android:textColor="#C609DA"
+                android:textStyle="bold"
+                android:textColor="#AE10CA"
                 android:textSize="30sp" />
 
             <RadioButton
@@ -70,6 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="90dp"
+                android:textStyle="bold"
                 android:layout_marginTop="15dp"
                 android:text="Sour"
                 android:textColor="#478102"

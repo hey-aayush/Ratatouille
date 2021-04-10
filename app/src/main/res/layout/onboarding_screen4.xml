@@ -3,26 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@drawable/foodg"
     android:padding="30dp"
     android:id="@+id/slideLayout"
     android:theme="@style/MyMaterialTheme"
 
     >
 
-    <ImageView
-        android:id="@+id/healthco"
-        android:layout_width="wrap_content"
-        android:layout_height="300dp"
-        android:src="@drawable/healthy"
-        android:layout_marginTop="0dp"
-        android:alpha="0.5"
-        ></ImageView>
-
     <LinearLayout
-        android:layout_below="@+id/healthco"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/card_login"
         android:orientation="vertical">
 <!--
         <TextView
@@ -39,10 +31,11 @@
             android:id="@+id/question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
            android:layout_marginTop="10dp"
             android:gravity="center"
             android:text="How health conscious are you?"
-            android:textColor="#2C42BF"
+            android:textColor="#F33628"
             android:textSize="35sp" />
 
         <!-- Discrete slider -->
@@ -57,7 +50,7 @@
             android:valueTo="10.0"
             app:haloColor="@color/colorAccent"
             app:labelBehavior="floating"
-            app:thumbColor="@color/purple_500" />
+            app:thumbColor="@color/colorPrimary" />
 
     </LinearLayout>
 
