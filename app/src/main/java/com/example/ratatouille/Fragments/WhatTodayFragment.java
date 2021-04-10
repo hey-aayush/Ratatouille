@@ -1,11 +1,13 @@
 package com.example.ratatouille.Fragments;
 
 import android.animation.ArgbEvaluator;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +20,7 @@ import com.example.ratatouille.Models.Recipes;
 import com.example.ratatouille.Models.User;
 import com.example.ratatouille.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -48,15 +51,19 @@ public class WhatTodayFragment extends Fragment {
 
     private User userDetails;
 
-    public static List<Recipes> recipes;
+    public static List<Recipes> recipes=new ArrayList<>();
 
     private static final String TAG = "WhatTodayFrag";
+
+    ProgressBar progressBar;
 
     ViewPager viewPager;
     WhatTodayAdapter adapter;
    // List<what_today_model> models;
     Integer[] colors = null;
     ArgbEvaluator argbEvaluator = new ArgbEvaluator();
+
+    View RootView;
 
 
     public WhatTodayFragment() {
@@ -65,15 +72,26 @@ public class WhatTodayFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View RootView = inflater.inflate(R.layout.what_today_fragment, container, false);
+         RootView = inflater.inflate(R.layout.what_today_fragment, container, false);
 
-        recipes = new ArrayList<>();
+        progressBar=RootView.findViewById(R.id.whats_today_progressbar);
+       // Recipes demo=new Recipes();
         getRecipieData();
 
-        if(recipes.size()!=0)
-        {
-            adapter = new WhatTodayAdapter(recipes, getContext());
-        }
+        check(RootView);
+
+        Log.d(TAG, "after getrecipie");
+
+
+
+        return RootView;
+    }
+
+    private void check(View view)
+    {
+        adapter = new WhatTodayAdapter(recipes, getContext());
+
+
 
         viewPager = RootView.findViewById(R.id.viewPager_what_today);
         viewPager.setAdapter(adapter);
@@ -118,11 +136,12 @@ public class WhatTodayFragment extends Fragment {
 
             }
         });
-        //return inflater.inflate(R.layout.fragment_what_today,container,false);
-        return RootView;
     }
 
     private void getRecipieData() {
+
+       progressBar.setVisibility(View.VISIBLE);
+        Log.d(TAG, "getRecipieData Called");
 
         db = FirebaseFirestore.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
@@ -157,7 +176,7 @@ public class WhatTodayFragment extends Fragment {
 
                                 Query query;
 
-                                if (isVeg == true) {
+                                if (isVeg) {
 //                                    query = recipesDbRef.whereEqualTo("veg", true).whereArrayContains("moods", sp_sw_sr).orderBy("noOfLikes").orderBy("cookTimeMin").orderBy("noOfFavourites").limit(10);
                                     query = recipesDbRef.whereEqualTo("veg", true).whereArrayContains("moods", sp_sw_sr).orderBy("noOfLikes", Query.Direction.DESCENDING).orderBy("cookTimeMin");
                                 } else {
@@ -183,6 +202,10 @@ public class WhatTodayFragment extends Fragment {
                                                     Recipes.RecipeCustomSortingComparator comparator = new Recipes.RecipeCustomSortingComparator();
                                                     comparator.setUserDetails(userDetails);
                                                     Collections.sort(recipes, comparator);
+                                                    adapter.notifyDataSetChanged();
+                                                    progressBar.setVisibility(View.GONE);
+                                                    check(RootView);
+
 
                                                 } else {
                                                     Log.d(TAG, "Error getting documents: ", task.getException());
@@ -198,5 +221,7 @@ public class WhatTodayFragment extends Fragment {
                         }
                     }
                 });
+
+        Log.d(TAG, "getRecipieData end");
     }
 }

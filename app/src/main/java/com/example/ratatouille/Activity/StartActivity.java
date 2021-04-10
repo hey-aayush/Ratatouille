@@ -52,7 +52,7 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
 
         setSupportActionBar(binding.toolbar);
 
-        userId=Login.mAuth.getUid();
+        userId=FirebaseAuth.getInstance().getUid();
         fStore=FirebaseFirestore.getInstance();
         firebaseStorage=FirebaseStorage.getInstance();
 
@@ -133,7 +133,7 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
                  SignOut();
                 break;
             case R.id.nav_settingst:
-                // StartProfileActivity();
+                 StartProfileActivity();
                 break;
 
         }
@@ -141,6 +141,10 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
         return true;
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> a0a5e819e72da8c15e4d69c7fcd8e25527f4ad59
     private void SignOut() {
 
         FirebaseAuth firebaseAuth=FirebaseAuth.getInstance();

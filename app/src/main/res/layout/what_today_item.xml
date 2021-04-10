@@ -17,7 +17,7 @@
             android:layout_height="500dp">
 
             <ImageView
-                android:id="@+id/image"
+                android:id="@+id/image_whattoday"
                 android:src="@drawable/french_fries"
                 android:scaleType="centerCrop"
                 android:layout_width="match_parent"
@@ -25,9 +25,9 @@
 
             <TextView
 
-                android:id="@+id/title"
+                android:id="@+id/title_whattoday"
                 android:textColor="#262626"
-                android:layout_below="@id/image"
+                android:layout_below="@id/image_whattoday"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="16dp"
                 android:text="Brochure"
@@ -36,8 +36,8 @@
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:id="@+id/desc"
-                android:layout_below="@id/title"
+                android:id="@+id/desc_whattoday"
+                android:layout_below="@id/title_whattoday"
                 android:layout_marginTop="3dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"

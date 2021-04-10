@@ -4,11 +4,12 @@ import android.util.Log;
 
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
+import java.io.Serializable;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
-public class Recipes {
+public class Recipes implements Serializable {
 
     private String recipeId ;
 
