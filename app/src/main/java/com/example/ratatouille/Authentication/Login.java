@@ -79,6 +79,7 @@ public class Login extends AppCompatActivity {
                     return;
                 }
                 progressBar.setVisibility(View.VISIBLE);
+                mLoginBtn.setVisibility(View.GONE);
                 // authenticate the user with email and password
                 System.out.println(user);
 
@@ -95,6 +96,7 @@ public class Login extends AppCompatActivity {
                         } else {
                             Toast.makeText(Login.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);   //setting the progress bar visibility gone after login
+                            mLoginBtn.setVisibility(View.VISIBLE);
                         }
                     }
                 });

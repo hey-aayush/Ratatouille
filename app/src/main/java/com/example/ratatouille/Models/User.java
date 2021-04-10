@@ -5,7 +5,7 @@ import com.example.ratatouille.Activity.SurveyAnswer;
 public class User {
 
     private String name,uid, email, reg_food, sp_sw_sr;
-    private boolean veg = false;
+    private boolean veg = true;
     private int cooking, fastfood, health,newfood;
 
     public User(String name,String uid,String email){

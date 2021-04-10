@@ -7,7 +7,13 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="redColor">#DF4E4E</color>
+
     <color name="red">#F83B00</color>
+
+    <color name="semiTransparentColor">#ABFDFDFD</color>
+    <color name="TransparentColor">#00FDFDFD</color>
+
 
     <!-- survey form and onboarding screen  -->
     <color name="colorAccent">#EA8E05</color>
