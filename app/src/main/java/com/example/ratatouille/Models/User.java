@@ -108,4 +108,19 @@ public class User {
         this.veg = answer.isVeg();
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", uid='" + uid + '\'' +
+                ", email='" + email + '\'' +
+                ", reg_food='" + reg_food + '\'' +
+                ", sp_sw_sr='" + sp_sw_sr + '\'' +
+                ", veg=" + veg +
+                ", cooking=" + cooking +
+                ", fastfood=" + fastfood +
+                ", health=" + health +
+                ", newfood=" + newfood +
+                '}';
+    }
 }
