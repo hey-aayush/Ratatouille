@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -52,6 +53,8 @@ public class WhatTodayFragment extends Fragment {
 
     private static final String TAG = "WhatTodayFrag";
 
+    ProgressBar progressBar;
+
     ViewPager viewPager;
     WhatTodayAdapter adapter;
    // List<what_today_model> models;
@@ -67,21 +70,14 @@ public class WhatTodayFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View RootView = inflater.inflate(R.layout.what_today_fragment, container, false);
 
-
+        progressBar=RootView.findViewById(R.id.whats_today_progressbar);
        // Recipes demo=new Recipes();
         getRecipieData();
 
         Log.d(TAG, "after getrecipie");
 
-       /* for(int i=0;i<5;i++)
-        {
-            Recipes temp=new Recipes();
-            temp.setRecipeDescription("gyuwveyucvbeqbvcqe");
-            temp.setRecipeName("effew");
-            temp.setRecipeImageUrl("https://firebasestorage.googleapis.com/v0/b/ratatoulile.appspot.com/o/RecipesImages%2F9Bxd8uMJBeL1cHXDJms6?alt=media&token=87895a04-70de-4059-9aaa-441d0a3fe5aa");
-            recipes.add(temp);
-        }*/
-        
+
+
 
 
            adapter = new WhatTodayAdapter(recipes, getContext());
@@ -137,7 +133,7 @@ public class WhatTodayFragment extends Fragment {
 
     private void getRecipieData() {
 
-
+       progressBar.setVisibility(View.VISIBLE);
         Log.d(TAG, "getRecipieData Called");
 
         db = FirebaseFirestore.getInstance();
@@ -199,6 +195,7 @@ public class WhatTodayFragment extends Fragment {
                                                     Recipes.RecipeCustomSortingComparator comparator = new Recipes.RecipeCustomSortingComparator();
                                                     comparator.setUserDetails(userDetails);
                                                     Collections.sort(recipes, comparator);
+                                                    progressBar.setVisibility(View.GONE);
 
                                                 } else {
                                                     Log.d(TAG, "Error getting documents: ", task.getException());

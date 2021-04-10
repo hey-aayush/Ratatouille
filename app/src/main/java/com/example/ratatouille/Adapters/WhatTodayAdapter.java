@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.bumptech.glide.Glide;
+import com.example.ratatouille.Activity.RecipieDetailActivity;
 import com.example.ratatouille.Models.Recipes;
 import com.example.ratatouille.R;
 
@@ -68,7 +69,7 @@ public class WhatTodayAdapter extends PagerAdapter {
         Log.d(TAG, "instantiateItem: "+desc);
 
 
-      /*  view.setOnClickListener(new View.OnClickListener() {
+        view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, RecipieDetailActivity.class);
@@ -79,7 +80,7 @@ public class WhatTodayAdapter extends PagerAdapter {
 
 
             }
-        });*/
+        });
 
         container.addView(view, 0);
         return view;
