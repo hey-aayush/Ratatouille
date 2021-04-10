@@ -82,7 +82,7 @@
                             android:orientation="vertical">
                             <TextView
                                 android:id="@+id/textCategory"
-                                android:text="@string/category"
+                                android:text="Cook Time(Min)"
                                 android:paddingLeft="14dp"
                                 android:paddingRight="14dp"
                                 android:paddingTop="14dp"
@@ -114,7 +114,7 @@
                             android:orientation="vertical">
                             <TextView
                                 android:id="@+id/Country"
-                                android:text="@string/country"
+                                android:text="Region"
                                 android:paddingLeft="14dp"
                                 android:paddingRight="14dp"
                                 android:paddingTop="14dp"
@@ -139,7 +139,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/instructions"
+                    android:text="Description"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="16dp"
                     android:layout_marginTop="20dp"
