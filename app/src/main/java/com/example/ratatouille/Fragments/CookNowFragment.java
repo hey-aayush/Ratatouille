@@ -39,7 +39,7 @@ public class CookNowFragment extends Fragment {
     };
 
     private static final String[] MOODS = new String[]{
-            "Spicy", "Sweet", "Desert", "fastFood"
+            "spicy", "sweet", "desert", "fast food"
     };
 
     public RecipeViewAdapter getRecipeViewAdapter() {
@@ -53,7 +53,7 @@ public class CookNowFragment extends Fragment {
     String TAG = "Cook Now Fragment";
     private HashSet<String> ingredientPresent = new HashSet<>();
     private HashSet<String > ingredientAbsent = new HashSet<>();
-    private String mood;
+    private HashSet<String> mood = new HashSet<>();
     private int minTime = Integer.MAX_VALUE;
     private HashMap<String, ArrayList<Recipes>> ingredientMap = new HashMap<>();
     HashSet<Recipes> recipeList = new HashSet<>();
@@ -75,7 +75,12 @@ public class CookNowFragment extends Fragment {
     // ChipItemBinding chipItemBinding;
 
     public CookNowFragment() {
+        fstore = StartActivity.fStore;
         firstQuery();
+        mood = new HashSet<>();
+        ingredientPresent = new HashSet<>();
+        ingredientAbsent = new HashSet<>();
+        minTime = Integer.MAX_VALUE;
     }
 
     @Nullable
@@ -104,17 +109,20 @@ public class CookNowFragment extends Fragment {
 
                 Chip chip = (Chip) inflater.inflate(R.layout.item_mood_tag, null, false);
                 chip.setText(moodtag);
+                String temp = chip.getText().toString();
                 chip.setOnCloseIconClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         binding.allTagsGroup.removeView(view);
+                        mood.remove(temp);
+                        getQueryResult();
                     }
                 });
 
-                String temp = chip.getText().toString();
+
                 if (!(temp.length() == 0)) {
                     binding.allTagsGroup.addView(chip);
-                    mood = temp;
+                    mood.add(temp);
                     getQueryResult();
                 }
 
@@ -131,14 +139,16 @@ public class CookNowFragment extends Fragment {
                 Chip chip = (Chip) inflater.inflate(R.layout.item_ingredient_tag, null, false);
                 chip.setText(absIngredient);
                 chip.setTextColor(Color.RED);
+                String temp = chip.getText().toString();
                 chip.setOnCloseIconClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         binding.allTagsGroup.removeView(view);
+                        ingredientAbsent.remove(temp);
+                        getQueryResult();
                     }
                 });
 
-                String temp = chip.getText().toString();
                 if (!(temp.length() == 0)) {
                     binding.allTagsGroup.addView(chip);
                     ingredientAbsent.add(temp);
@@ -157,14 +167,17 @@ public class CookNowFragment extends Fragment {
 
                 Chip chip = (Chip) inflater.inflate(R.layout.item_ingredient_tag, null, false);
                 chip.setText(ingtag);
+                String temp = chip.getText().toString();
                 chip.setOnCloseIconClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         binding.allTagsGroup.removeView(view);
+                        ingredientPresent.remove(temp);
+                        getQueryResult();
                     }
                 });
 
-                String temp = chip.getText().toString();
+
                 if (!(temp.length() == 0)) {
                     binding.allTagsGroup.addView(chip);
                     ingredientPresent.add(temp);
@@ -226,12 +239,15 @@ public class CookNowFragment extends Fragment {
                         }
                     }
                 });
+
     }
     public void getQueryResult() {
+        Toast.makeText(getContext(), ingredientMap.size() + " ingredient.size", Toast.LENGTH_SHORT).show();
         HashSet<Recipes> resultList = new HashSet<>();
         HashSet<Recipes> tempList = new HashSet<>();
         // for adding recipes according to ingredients which is present
         int count = 0;
+        Toast.makeText(getContext(), ingredientPresent.size() + " ", Toast.LENGTH_SHORT).show();
         for(String ingredient : ingredientPresent){
             resultList = new HashSet<>();
             if(ingredientMap.containsKey(ingredient)){
@@ -255,29 +271,58 @@ public class CookNowFragment extends Fragment {
                 resultList.add(r);
             }
         }
+
+        HashSet<Recipes> removeList = new HashSet<>();
+
+        // for mood list
+        for(String s : mood){
+            for(Recipes r: resultList){
+                if(!r.getMoods().contains(s)){
+                    removeList.add(r);
+                }
+            }
+
+        }
+
+        for(Recipes r: removeList){
+            if(resultList.contains(r))
+                resultList.remove(r);
+        }
+        removeList.clear();
         // for removing ingredients
         for(String ingredient: ingredientAbsent){
             if(ingredientMap.containsKey(ingredient)){
                 for(Recipes r: ingredientMap.get(ingredient)){
                     if(resultList.contains(r)){
-                        resultList.remove(r);
+                        removeList.add(r);
                     }
                 }
             }
         }
-
+        Log.d(TAG, "+++++++++++++++++++++++++  Error in size " + removeList.size());
+        for(Recipes r: removeList){
+            if(resultList.contains(r))
+                resultList.remove(r);
+        }
+        removeList.clear();
         // for checking minTime to cook and mood
         for(Recipes r: recipeList){
             if(r.getCookTimeMin()>minTime)
-                recipeList.remove(r);
-            if(!r.getMoods().contains(mood)){
-                recipeList.remove(r);
-            }
+                removeList.add(r);
         }
+        //Toast.makeText(getContext(), recipes.size() + " reciepes.size", Toast.LENGTH_SHORT).show();
+        for(Recipes r: removeList){
+            if(resultList.contains(r))
+                resultList.remove(r);
+        }
+        removeList.clear();
+        //Toast.makeText(getContext(), resultList.size() + " 111 reciepes.size", Toast.LENGTH_SHORT).show();
         recipes.clear();
         for(Recipes r: resultList){
             recipes.add(r);
         }
+        //Toast.makeText(getContext(), recipes.size() + " reciepes.size", Toast.LENGTH_SHORT).show();
+
         recipeViewAdapter.notifyDataSetChanged();
 
     }
