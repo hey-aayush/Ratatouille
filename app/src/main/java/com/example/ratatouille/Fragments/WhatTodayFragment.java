@@ -1,6 +1,7 @@
 package com.example.ratatouille.Fragments;
 
 import android.animation.ArgbEvaluator;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -61,6 +62,8 @@ public class WhatTodayFragment extends Fragment {
     Integer[] colors = null;
     ArgbEvaluator argbEvaluator = new ArgbEvaluator();
 
+    View RootView;
+
 
     public WhatTodayFragment() {
     }
@@ -68,11 +71,13 @@ public class WhatTodayFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View RootView = inflater.inflate(R.layout.what_today_fragment, container, false);
+         RootView = inflater.inflate(R.layout.what_today_fragment, container, false);
 
         progressBar=RootView.findViewById(R.id.whats_today_progressbar);
        // Recipes demo=new Recipes();
         getRecipieData();
+
+        check(RootView);
 
         Log.d(TAG, "after getrecipie");
 
@@ -80,7 +85,14 @@ public class WhatTodayFragment extends Fragment {
 
 
 
-           adapter = new WhatTodayAdapter(recipes, getContext());
+
+
+        return RootView;
+    }
+
+    private void check(View view)
+    {
+        adapter = new WhatTodayAdapter(recipes, getContext());
 
 
 
@@ -127,8 +139,6 @@ public class WhatTodayFragment extends Fragment {
 
             }
         });
-
-        return RootView;
     }
 
     private void getRecipieData() {
@@ -196,6 +206,9 @@ public class WhatTodayFragment extends Fragment {
                                                     comparator.setUserDetails(userDetails);
                                                     Collections.sort(recipes, comparator);
                                                     progressBar.setVisibility(View.GONE);
+                                                    check(RootView);
+                                                    adapter.notifyDataSetChanged();
+
 
                                                 } else {
                                                     Log.d(TAG, "Error getting documents: ", task.getException());
