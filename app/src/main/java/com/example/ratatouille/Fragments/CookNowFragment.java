@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -47,6 +49,7 @@ public class CookNowFragment extends Fragment {
     }
 
     private RecipeViewAdapter recipeViewAdapter;
+    boolean check = false;
 
     private ArrayList<Recipes> recipes;
     FirebaseFirestore fstore;
@@ -81,6 +84,7 @@ public class CookNowFragment extends Fragment {
         ingredientPresent = new HashSet<>();
         ingredientAbsent = new HashSet<>();
         minTime = Integer.MAX_VALUE;
+        check = false;
     }
 
     @Nullable
@@ -198,14 +202,14 @@ public class CookNowFragment extends Fragment {
             }
         });
 
+        binding.isVeg.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                check = !check;
+                getQueryResult();
+            }
+        });
         recipes = new ArrayList<Recipes>();
-
-//        // Sample Posts List
-//        for (int i = 0; i < 10; i++) {
-//            Recipe recipe = new Recipe();
-//            recipe.setChefName("Jay");
-//            recipes.add(recipe);
-//        }
 
         recipeViewAdapter = new RecipeViewAdapter(this.getContext(), recipes, fstore);
         binding.CookNowRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
@@ -317,12 +321,31 @@ public class CookNowFragment extends Fragment {
         }
         removeList.clear();
         //Toast.makeText(getContext(), resultList.size() + " 111 reciepes.size", Toast.LENGTH_SHORT).show();
+
+        Toast.makeText(getContext(), " " + check, Toast.LENGTH_SHORT).show();
+
+        for(Recipes r: resultList){
+            if(check){
+                if(r.isVeg()){
+                    removeList.add(r);
+                }
+            } else{
+                if(!r.isVeg()){
+                    removeList.add(r);
+                }
+            }
+        }
+        for(Recipes r: removeList){
+            if(resultList.contains(r))
+                resultList.remove(r);
+        }
+
+        removeList.clear();
         recipes.clear();
+
         for(Recipes r: resultList){
             recipes.add(r);
         }
-        //Toast.makeText(getContext(), recipes.size() + " reciepes.size", Toast.LENGTH_SHORT).show();
-
         recipeViewAdapter.notifyDataSetChanged();
 
     }
