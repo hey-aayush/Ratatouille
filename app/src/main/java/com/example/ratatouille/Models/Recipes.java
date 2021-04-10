@@ -1,5 +1,9 @@
 package com.example.ratatouille.Models;
 
+import android.util.Log;
+
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+
 import java.util.List;
 
 public class Recipes {
@@ -48,6 +52,8 @@ public class Recipes {
         this.healthy=healthy;
         this.region=region;
     }
+
+
 
     public String getRecipeId() {
         return recipeId;
