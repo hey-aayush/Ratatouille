@@ -6,4 +6,5 @@
 
 # Introduction
 
-An android app lets you posts/share your best recipes and search food recipes based on filters on your preferances and ingredient you have or which you don't have.
+An android app that lets you post/share your best recipes and search food recipes based on filters on your preferances and ingredients you have or which you don't have.
+Also get recommened about dishes you might be interested in according to your preferences.
