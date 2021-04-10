@@ -16,10 +16,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ratatouille">
         <activity android:name=".Activity.addRecipe"></activity>
+        <activity android:name=".Authentication.Login"></activity>
         <activity android:name=".Activity.Survey_Form" />
         <activity android:name=".Activity.StartActivity" />
         <activity android:name=".Authentication.Register" />
-        <activity android:name=".Authentication.Login">
+        <activity android:name=".SplashScreen.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

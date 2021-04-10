@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:textAlignment="center"
+    android:background="#fff"
+    android:textDirection="firstStrong"
+    tools:context=".SplashScreen.SplashScreen">
+
+    <View
+        android:id="@+id/search"
+
+        android:layout_width="315dp"
+        android:layout_height="251dp"
+        android:layout_gravity="center"
+
+        android:layout_marginTop="160dp"
+        android:background="@drawable/cheff"
+        android:transitionName="logo_Image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.343" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="35dp"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:textColor="@color/redColor"
+        android:text="Ratatouille" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="86dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:fontFamily="cursive"
+        android:text="Save food and deep dive into the realm of delicacy"
+        android:textAlignment="center"
+        android:textColor="@color/red"
+        android:textSize="25sp" />
+
+
+</LinearLayout>
+
