@@ -139,7 +139,6 @@ public class WhatTodayFragment extends Fragment {
     }
 
     private void getRecipieData() {
-
        progressBar.setVisibility(View.VISIBLE);
         Log.d(TAG, "getRecipieData Called");
 

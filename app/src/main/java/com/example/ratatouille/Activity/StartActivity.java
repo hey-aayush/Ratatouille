@@ -132,8 +132,8 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
             case R.id.nav_logout:
                  SignOut();
                 break;
-            case R.id.nav_settingst:
-                 StartProfileActivity();
+            case R.id.nav_aboutus:
+                StartAboutusActivity();
                 break;
 
         }
@@ -166,6 +166,14 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
 
         Toast.makeText(this, "Profile icon clicked ! ", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(this, UserProfileActivity.class));
+
+    }
+
+    private void StartAboutusActivity()
+    {
+
+        Toast.makeText(this, "Profile icon clicked ! ", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this, AboutUsActivity.class));
 
     }
 }

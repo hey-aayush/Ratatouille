@@ -14,7 +14,8 @@
         android:roundIcon="@drawable/ic_cooking"
         android:supportsRtl="true"
         android:theme="@style/Theme.Ratatouille">
-        <activity android:name=".Activity.RecipieDetailActivity"></activity>
+        <activity android:name=".Activity.AboutUsActivity"></activity>
+        <activity android:name=".Activity.RecipieDetailActivity" />
         <activity android:name=".Activity.UserProfileActivity" />
         <activity android:name=".Activity.addRecipe" />
         <activity android:name=".Authentication.Login" />
