@@ -15,14 +15,21 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.ratatouille.Fragments.OnBoardingFragment0;
 import com.example.ratatouille.Fragments.OnBoardingFragment1;
 import com.example.ratatouille.Fragments.OnBoardingFragment2;
 import com.example.ratatouille.Fragments.OnBoardingFragment3;
+import com.example.ratatouille.Fragments.OnBoardingFragment4;
+import com.example.ratatouille.Fragments.OnBoardingFragment5;
+import com.example.ratatouille.Fragments.OnBoardingFragment6;
+import com.example.ratatouille.Fragments.OnBoardingFragment7;
+import com.example.ratatouille.Models.User;
 import com.example.ratatouille.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 // The SurveyForm Fragment
@@ -32,7 +39,7 @@ public class Survey_Form extends FragmentActivity {
 
     //Survey of some preferences of the user, having some default values
     private static final String TAG = "TAG";
-    public static String veg_nonveg = "Veg", sp_sw_sr = "Spicy", reg_food = "North Indian" ;
+    public static String veg_nonveg = "vegetarian", sp_sw_sr = "spicy", reg_food = "north india" ;
     public static int health = 5, fastfood = 5, newfood = 5, cooking = 5 ;
 
     private FirebaseFirestore fstore;
@@ -54,16 +61,21 @@ public class Survey_Form extends FragmentActivity {
         @Override
         public Fragment getItem(int position) {
             switch (position) {                                                     //position decides which fragment to display
-                case 0 : return new OnBoardingFragment1();
-                case 1 : return new OnBoardingFragment2();
-                case 2 : return new OnBoardingFragment3();
+                case 0 : return new OnBoardingFragment0();
+                case 1 : return new OnBoardingFragment1();
+                case 2 : return new OnBoardingFragment2();
+                case 3 : return new OnBoardingFragment3();
+                case 4 : return new OnBoardingFragment4();
+                case 5 : return new OnBoardingFragment5();
+                case 6 : return new OnBoardingFragment6();
+                case 7 : return new OnBoardingFragment7();
                 default: return null;
             }
         }
 
         @Override
         public int getCount() {                                                      //count of number of onboarding screens
-            return 3;
+            return 8;
         }
     };
 
@@ -98,7 +110,7 @@ public class Survey_Form extends FragmentActivity {
                 Log.d("newfood = ", String.valueOf(newfood));
                 Log.d("cooking = ", String.valueOf(cooking));
 //                update();
-                if(mCurrentPage == 3-1){                                                            //last page of survey completed
+                if(mCurrentPage == 8-1){                                                            //last page of survey completed
                     startActivity(new Intent(getApplicationContext(), StartActivity.class));
                     update();                                                                       //updating the preferences of user into database
                 } else {
@@ -134,7 +146,7 @@ public class Survey_Form extends FragmentActivity {
     // Selected page Dot indicator
     public void addDotsIndicator(int position){
 
-        mDots = new TextView[3];                        // TextView for DotsIndicators
+        mDots = new TextView[4];                        // TextView for DotsIndicators
         mDotLayout.removeAllViews();                    // Old dots removed
 
         for (int i=0; i<mDots.length; i++){
@@ -186,7 +198,7 @@ public class Survey_Form extends FragmentActivity {
                 mNextBtn.setText("Next");
                 mBackBtn.setText("");
 
-            } else if(position == 3-1){
+            } else if(position == 8-1){
                 mNextBtn.setEnabled(true);
                 mBackBtn.setEnabled(true);
 
@@ -216,20 +228,39 @@ public class Survey_Form extends FragmentActivity {
         SurveyAnswer answer = new SurveyAnswer(veg_nonveg, sp_sw_sr, reg_food, health, fastfood, newfood, cooking);
 
         fstore = FirebaseFirestore.getInstance();
+
         String userID = FirebaseAuth.getInstance().getUid();
-        DocumentReference userDataReference = fstore.collection("users").document(userID);
-        userDataReference.update("surveyAnswer", answer).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                Log.d(TAG, "DocumentSnapshot successfully updated!");
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.d(TAG, "Error in updating userData " + e.toString());
-            }
-        });
 
+        DocumentReference userDataReference = fstore.collection("usersDetails").document(userID);
+
+        userDataReference.get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        Log.d(TAG, "DocumentSnapshot successfully retrieved!");
+                        User user = documentSnapshot.toObject(User.class);
+                        user.setUserSurvey(answer);
+                        userDataReference.set(user)
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        Log.d(TAG, "DocumentSnapshot successfully updated!");
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Log.d(TAG, "Error in updating userData " + e.toString());
+                                    }
+                                });
+
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d(TAG, "Error in retrieving userData " + e.toString());
+                    }
+                });
     }
-
 }

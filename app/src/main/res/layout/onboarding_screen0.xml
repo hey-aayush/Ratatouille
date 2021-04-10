@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="30dp"
+    android:orientation="vertical"
+    android:id="@+id/slideLayout"
+    >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:src="@drawable/welcome"
+        android:layout_marginTop="30dp"
+        android:alpha="0.8"
+        ></ImageView>
+
+
+    <TextView
+        android:id="@+id/desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+
+        android:layout_marginTop="40dp"
+
+        android:gravity="center"
+        android:text="Help us find your favourite dishes by answering a few simple questions."
+        android:textColor="@color/Orange"
+        android:textSize="30sp" />
+
+
+</LinearLayout>

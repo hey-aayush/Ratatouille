@@ -19,6 +19,7 @@
     <color name="colorAccent">#EA8E05</color>
     <color name="transparentWhite">#cccccc</color>
     <color name="colorPrimary">#EF9005</color>
+    <color name="Orange">#E38802</color>
 
     <!-- for start activity background color  -->
     <color name="greyishBackground">#DDD0AF</color>
