@@ -52,7 +52,7 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
 
         setSupportActionBar(binding.toolbar);
 
-        userId=Login.mAuth.getUid();
+        userId=FirebaseAuth.getInstance().getUid();
         fStore=FirebaseFirestore.getInstance();
         firebaseStorage=FirebaseStorage.getInstance();
 

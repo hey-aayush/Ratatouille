@@ -199,6 +199,7 @@ public class WhatTodayFragment extends Fragment {
                                                     Recipes.RecipeCustomSortingComparator comparator = new Recipes.RecipeCustomSortingComparator();
                                                     comparator.setUserDetails(userDetails);
                                                     Collections.sort(recipes, comparator);
+                                                    adapter.notifyDataSetChanged();
 
                                                 } else {
                                                     Log.d(TAG, "Error getting documents: ", task.getException());
