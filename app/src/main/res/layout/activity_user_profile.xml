@@ -20,117 +20,96 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/edit_profile"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentRight="true"
-                android:layout_marginStart="68dp"
-                android:layout_marginBottom="70dp"
-                android:src="@drawable/ic_edit"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/profilePageUserName"
-                app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profilepageProfileImage"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_margin="5dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:layout_weight="0"
-                android:src="@drawable/ic_profileimage"
-                app:civ_border_color="@color/redColor"
-                app:civ_border_width="2dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profilepageProfileImage"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_margin="5dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_weight="0"
+                    android:src="@drawable/ic_profileimage"
+                    app:civ_border_color="@color/redColor"
+                    app:civ_border_width="2dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/profilePageUserName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="60dp"
-                android:gravity="center_horizontal"
-                android:text="Aayush"
-                android:textColor="#000000"
-                android:textSize="22dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/profilepageProfileImage"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <LinearLayout
-                android:id="@+id/userDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="@+id/profilePageUserName"
-                app:layout_constraintStart_toStartOf="@+id/profilePageUserName"
-                app:layout_constraintTop_toBottomOf="@+id/profilePageUserName"
-                android:gravity="center_horizontal">
                 <TextView
-                    android:id="@+id/profilePageVeg"
+                    android:id="@+id/profilePageUserName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:textAllCaps="true"
-                    android:text="Veg" />
+                    android:layout_marginEnd="70dp"
+                    android:text="Aayush"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/profilepageProfileImage"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/profilePageRegion"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:textAllCaps="true"
-                    android:text="north india" />
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="@+id/profilePageUserName"
+                    app:layout_constraintStart_toStartOf="@+id/profilePageUserName"
+                    app:layout_constraintTop_toBottomOf="@+id/profilePageUserName">
 
-                <TextView
-                    android:id="@+id/profilePageMood"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:textAllCaps="true"
-                    android:text="Spicy"
-                    />
+                    <TextView
+                        android:id="@+id/profilePageVeg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="" />
 
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/profilePageRegion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="" />
 
-            <LinearLayout
-                android:id="@+id/linearlayout_logout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="202dp"
-                android:layout_marginTop="43dp"
-                android:layout_marginEnd="10dp"
-                android:gravity="center"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/profilepageProfileImage"
-                app:layout_constraintTop_toBottomOf="@+id/edit_profile">
+                    <TextView
+                        android:id="@+id/profilePageMood"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/edit_profile"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="107dp"
+                    android:layout_marginBottom="44dp"
+                    android:src="@drawable/ic_edit"
+                    app:layout_constraintBottom_toTopOf="@+id/iclogout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/profilePageUserName"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/iclogout"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="254dp"
+                    android:layout_marginTop="44dp"
                     android:src="@drawable/ic_logout"
-                    android:tooltipText="Logout" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/profilepageProfileImage"
+                    app:layout_constraintTop_toBottomOf="@+id/edit_profile" />
 
-                <!--                <TextView-->
-                <!--                    android:id="@+id/logout"-->
-                <!--                    android:layout_width="wrap_content"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:layout_marginLeft="5dp"-->
-                <!--                    android:text="Logout"-->
-                <!--                    android:textColor="#6A6362"-->
-                <!--                    android:textSize="15dp" />-->
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -143,5 +122,5 @@
             app:layout_constraintTop_toBottomOf="@+id/cardView"
             tools:listitem="@layout/item_recipe" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
 
+</layout>

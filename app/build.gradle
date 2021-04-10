@@ -59,4 +59,7 @@ dependencies {
 
     //For converting url to image
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //For converting url to image
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }
