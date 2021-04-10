@@ -109,12 +109,13 @@ public class Survey_Form extends FragmentActivity {
                 Log.d("fastfood = ", String.valueOf(fastfood));
                 Log.d("newfood = ", String.valueOf(newfood));
                 Log.d("cooking = ", String.valueOf(cooking));
-//                update();
+                update();
                 if(mCurrentPage == 8-1){                                                            //last page of survey completed
                     startActivity(new Intent(getApplicationContext(), StartActivity.class));
                     update();                                                                       //updating the preferences of user into database
                 } else {
                     mSlideViewPager.setCurrentItem(mCurrentPage + 1);                               //if not last page, then go to next page
+                    update();
                 }
             }
         });
