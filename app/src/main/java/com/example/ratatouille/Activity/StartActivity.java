@@ -11,6 +11,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ratatouille.Fragments.CookNowFragment;
@@ -25,6 +28,9 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class StartActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     ActivityStartBinding binding;
+    private ImageView nav_header_img;
+    private TextView nav_header_name;
+    private TextView nav_header_email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +45,13 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
         binding.drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         binding.navView.setNavigationItemSelectedListener(this);
+
+        View header = binding.navView.getHeaderView(0);
+
+        nav_header_img= (ImageView) header.findViewById(R.id.nav_header_img);
+        nav_header_email=(TextView) header.findViewById(R.id.nav_header_email);
+        nav_header_name=(TextView) header.findViewById(R.id.nav_header_name);
+
 
         // mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         binding.bottomNavigation.setOnNavigationItemSelectedListener(navListener);
