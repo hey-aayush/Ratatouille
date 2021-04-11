@@ -18,6 +18,9 @@ Also get recommened about dishes you might be interested in according to your pr
 
 New User can Sign up with an Email Id which is verfied by sending a verification email.
 
+![login screen](https://github.com/hey-aayush/Ratatouille/blob/main/reduced_images/WhatsApp%20Image%202021-04-11%20at%2004.57.55.jpg) ![registration screen](https://github.com/hey-aayush/Ratatouille/blob/main/reduced_images/WhatsApp%20Image%202021-04-11%20at%2004.58.56.jpg)
+#### Home Screen
+
 Registered Users can Login once email is Verified with their password.
 
 Users can reset password by Forgot Password option.
