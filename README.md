@@ -18,32 +18,46 @@ Also get recommened about dishes you might be interested in according to your pr
 
 New User can Sign up with an Email Id which is verfied by sending a verification email.
 
-![login screen](https://github.com/hey-aayush/Ratatouille/blob/main/reduced_images/WhatsApp%20Image%202021-04-11%20at%2004.57.55.jpg) ![registration screen](https://github.com/hey-aayush/Ratatouille/blob/main/reduced_images/WhatsApp%20Image%202021-04-11%20at%2004.58.56.jpg)
+![registration screen](https://github.com/hey-aayush/Ratatouille/blob/main/reduced_images/WhatsApp%20Image%202021-04-11%20at%2004.58.56.jpg)
+
 #### Home Screen
 
 Registered Users can Login once email is Verified with their password.
 
+![login screen](https://github.com/hey-aayush/Ratatouille/blob/main/reduced_images/WhatsApp%20Image%202021-04-11%20at%2004.57.55.jpg)
+
 Users can reset password by Forgot Password option.
 
 First Login user are asked series of Questions about their preference via onboarding Screens
+Some of them are - 
+
+![swee_spicy](https://github.com/hey-aayush/Ratatouille/blob/main/reduced_images/WhatsApp%20Image%202021-04-11%20at%2005.12.28%20(6).jpg) ![veg_NOn-veg](https://github.com/hey-aayush/Ratatouille/blob/main/reduced_images/WhatsApp%20Image%202021-04-11%20at%2005.12.28%20(5).jpg) ![healthy](https://github.com/hey-aayush/Ratatouille/blob/main/reduced_images/WhatsApp%20Image%202021-04-11%20at%2005.12.28%20(3).jpg)
 
 In MainAction there are 3 Section
 
 ## Views Recipes
 
-One can view ,like ,share and bookmark the recipies posted by all other users.
+One can view ,like ,share and bookmark the recipies posted by all other users. 
+
+![ViewRecipe_screen](https://github.com/hey-aayush/Ratatouille/blob/main/reduced_images/WhatsApp%20Image%202021-04-11%20at%2004.56.51.jpg)
 
 ## Post Recipeis
 
 One can post their own recipies via add recipies activity by clicking on floating.
 
+
+
 ## Filter Recipies
 
 Users can search and filter different recipies based on differnt fillters and tags.
 
+![filter screen](https://github.com/hey-aayush/Ratatouille/blob/main/reduced_images/WhatsApp%20Image%202021-04-11%20at%2004.57.31.jpg) ![post screen](https://github.com/hey-aayush/Ratatouille/blob/main/reduced_images/WhatsApp%20Image%202021-04-11%20at%2004.57.23.jpg)
+
 ## Recipies Recommendation
 
 User can also get recipies recommendation based on their preference.
+
+![post screen](https://github.com/hey-aayush/Ratatouille/blob/main/reduced_images/WhatsApp%20Image%202021-04-11%20at%2004.57.07.jpg) ![post screen](https://github.com/hey-aayush/Ratatouille/blob/main/reduced_images/WhatsApp%20Image%202021-04-11%20at%2004.57.12.jpg) 
 
 ## Profile Section
 
