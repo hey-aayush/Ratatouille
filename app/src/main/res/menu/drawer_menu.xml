@@ -10,7 +10,7 @@
         <item
             android:id="@+id/nav_aboutus"
             android:icon="@drawable/ic_baseline_turned_in_not_24"
-            android:title="Settings" />
+            android:title="About Us" />
         <item
             android:id="@+id/nav_share"
             android:icon="@drawable/ic_baseline_share_24"
